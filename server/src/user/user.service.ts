@@ -26,7 +26,7 @@ export class UserService {
 	}
 
 	async getUserByEmail(email: string): Promise<User> {
-		return this.prisma.user.findFirstOrThrow({
+		return this.prisma.user.findFirst({
 			where: { email },
 		})
 	}
@@ -37,7 +37,7 @@ export class UserService {
 		})
 	}
 
-	async updateUser(id: number, dto: UpdateUserDto): Promise<User> {
+	async updateUser(id: number, dto: UpdateUserDto) {
 		return this.prisma.user.update({
 			where: { id },
 			data: dto,
