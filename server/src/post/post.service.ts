@@ -21,6 +21,7 @@ export class PostService {
 				likes: {
 					select: ReturnUserObject,
 				},
+				comments: true,
 			},
 		})
 	}
@@ -31,6 +32,7 @@ export class PostService {
 			include: {
 				author: true,
 				likes: true,
+				comments: true,
 			},
 		})
 	}

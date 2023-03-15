@@ -1,4 +1,4 @@
-import { CanActivate, ExecutionContext, UnauthorizedException } from "@nestjs/common"
+import { CanActivate, ExecutionContext, Injectable, UnauthorizedException } from "@nestjs/common"
 import { JwtService } from "@nestjs/jwt"
 import { Reflector } from "@nestjs/core"
 import { Observable } from "rxjs"
@@ -6,12 +6,13 @@ import { Role, User } from "@prisma/client"
 import { ROLES_KEY } from "../decorators/roles.decorator"
 import { Request } from "express"
 
+@Injectable()
 export class RolesGuard implements CanActivate {
 	constructor(private readonly jwtService: JwtService, private readonly reflector: Reflector) {}
 
 	canActivate(context: ExecutionContext): boolean | Promise<boolean> | Observable<boolean> {
 		try {
-			const requiredRoles = this.reflector.getAllAndMerge<Role[]>(ROLES_KEY, [
+			const requiredRoles = this.reflector.getAllAndOverride<Role[]>(ROLES_KEY, [
 				context.getHandler(),
 				context.getClass(),
 			])

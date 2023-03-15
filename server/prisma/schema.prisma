@@ -11,26 +11,38 @@ datasource db {
 }
 
 model User {
-  id         Int      @id @default(autoincrement())
-  createdAt  DateTime @default(now()) @map("created_at")
-  updatedAt  DateTime @updatedAt @map("updated_at")
-  email      String   @unique
+  id         Int       @id @default(autoincrement())
+  createdAt  DateTime  @default(now()) @map("created_at")
+  updatedAt  DateTime  @updatedAt @map("updated_at")
+  email      String    @unique
   password   String
   rtHash     String?
-  roles      Role[]   @default([USER])
-  Post       Post[]   @relation("author")
+  roles      Role[]    @default([USER])
+  Post       Post[]    @relation("author")
   likedPosts Post[]
+  comment    Comment[]
 }
 
 model Post {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
+  id        Int       @id @default(autoincrement())
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
   title     String
   content   String
-  author    User     @relation("author", fields: [userId], references: [id])
+  author    User      @relation("author", fields: [userId], references: [id])
   userId    Int
   likes     User[]
+  comments  Comment[]
+}
+
+model Comment {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now()) @map("created_at")
+  body      String
+  user      User     @relation(fields: [userId], references: [id])
+  userId    Int
+  post      Post     @relation(fields: [postId], references: [id])
+  postId    Int
 }
 
 enum Role {
