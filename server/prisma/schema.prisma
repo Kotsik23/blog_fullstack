@@ -18,9 +18,9 @@ model User {
   password   String
   rtHash     String?
   roles      Role[]    @default([USER])
-  Post       Post[]    @relation("author")
+  posts      Post[]    @relation("author")
   likedPosts Post[]
-  comment    Comment[]
+  comments   Comment[]
 }
 
 model Post {

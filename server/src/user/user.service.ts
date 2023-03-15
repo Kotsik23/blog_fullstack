@@ -4,6 +4,7 @@ import { PrismaService } from "../prisma/prisma.service"
 import { CreateUserDto } from "./dto/create-user.dto"
 import { UpdateUserDto } from "./dto/update-user.dto"
 import { genSalt, hash } from "bcrypt"
+import { ReturnUserObject } from "src/shared/return-objects"
 
 @Injectable()
 export class UserService {
@@ -15,8 +16,10 @@ export class UserService {
 		})
 	}
 
-	async getAllUsers(): Promise<User[]> {
-		return this.prisma.user.findMany()
+	async getAllUsers(): Promise<Partial<User>[]> {
+		return this.prisma.user.findMany({
+			select: ReturnUserObject,
+		})
 	}
 
 	async getUserById(id: number): Promise<User> {
