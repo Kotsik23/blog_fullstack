@@ -82,6 +82,12 @@ export class PostService {
 	}
 
 	async updatePost(id: number, dto: UpdatePostDto): Promise<Post> {
+		if (dto.imageUrl) {
+			const post = await this.getPostById(id)
+			const oldImageUrl = post.imageUrl
+			await this.filesService.deleteFileFromFirebase(oldImageUrl)
+		}
+
 		return this.prisma.post.update({
 			where: { id },
 			data: dto,
@@ -89,9 +95,11 @@ export class PostService {
 	}
 
 	async deletePost(id: number): Promise<Post> {
-		return this.prisma.post.delete({
+		const post = await this.prisma.post.delete({
 			where: { id },
 		})
+		await this.filesService.deleteFileFromFirebase(post.imageUrl)
+		return post
 	}
 
 	async toggleLike(userId: number, postId: number): Promise<Post> {
