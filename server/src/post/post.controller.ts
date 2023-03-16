@@ -1,28 +1,37 @@
 import {
 	Body,
 	Controller,
+	DefaultValuePipe,
 	Delete,
+	FileTypeValidator,
 	Get,
+	MaxFileSizeValidator,
 	Param,
+	ParseFilePipe,
 	ParseIntPipe,
 	Patch,
 	Post,
 	Query,
+	UploadedFile,
+	UseInterceptors,
 } from "@nestjs/common"
 import { PostService } from "./post.service"
 import { Auth } from "src/auth/guards/auth.guard"
 import { CurrentUser } from "src/auth/decorators/current-user.decorator"
 import { CreatePostDto } from "./dto/create-post.dto"
-import { OptionalQueryPipe } from "./optional-query.pipe"
 import { UpdatePostDto } from "./dto/update-post.dto"
+import { FileInterceptor } from "@nestjs/platform-express"
 
 @Controller("posts")
 export class PostController {
 	constructor(private readonly postService: PostService) {}
 
 	@Get()
-	async getPosts(@Query("userId", OptionalQueryPipe) userId?: number) {
-		return this.postService.getPosts(userId)
+	async getPosts(
+		@Query("userId") userId: string,
+		@Query("limit", new DefaultValuePipe(15), ParseIntPipe) limit: number
+	) {
+		return this.postService.getPosts(Number(userId) || undefined, limit)
 	}
 
 	@Get(":id")
@@ -32,8 +41,21 @@ export class PostController {
 
 	@Auth()
 	@Post()
-	async createPost(@CurrentUser("id") id: number, @Body() dto: CreatePostDto) {
-		return this.postService.createPost(id, dto)
+	@UseInterceptors(FileInterceptor("image"))
+	async createPost(
+		@CurrentUser("id") id: number,
+		@Body() dto: CreatePostDto,
+		@UploadedFile(
+			new ParseFilePipe({
+				validators: [
+					new MaxFileSizeValidator({ maxSize: 10e6 }),
+					new FileTypeValidator({ fileType: "image/jpeg" }),
+				],
+			})
+		)
+		image: Express.Multer.File
+	) {
+		return this.postService.createPost(id, dto, image)
 	}
 
 	@Auth()

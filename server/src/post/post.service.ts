@@ -3,26 +3,35 @@ import { PrismaService } from "../prisma/prisma.service"
 import { Post, Prisma } from "@prisma/client"
 import { CreatePostDto } from "./dto/create-post.dto"
 import { UpdatePostDto } from "./dto/update-post.dto"
-import { ReturnUserObject } from "src/shared/return-objects"
+import { FileService } from "src/file/file.service"
 
 @Injectable()
 export class PostService {
-	constructor(private readonly prisma: PrismaService) {}
+	constructor(
+		private readonly prisma: PrismaService,
+		private readonly filesService: FileService
+	) {}
 
-	async getPosts(userId?: number): Promise<Post[]> {
+	async getPosts(userId: number, limit: number): Promise<Post[]> {
 		return this.prisma.post.findMany({
 			where: {
 				userId,
 			},
 			include: {
 				author: {
-					select: ReturnUserObject,
+					select: {
+						id: true,
+						email: true,
+					},
 				},
-				likes: {
-					select: ReturnUserObject,
+				_count: {
+					select: {
+						likes: true,
+						comments: true,
+					},
 				},
-				comments: true,
 			},
+			take: limit,
 		})
 	}
 
@@ -30,18 +39,39 @@ export class PostService {
 		return this.prisma.post.findUniqueOrThrow({
 			where: { id },
 			include: {
-				author: true,
-				likes: true,
-				comments: true,
+				author: {
+					select: {
+						id: true,
+						email: true,
+					},
+				},
+				_count: {
+					select: {
+						likes: true,
+					},
+				},
+				comments: {
+					include: {
+						user: {
+							select: {
+								id: true,
+								email: true,
+							},
+						},
+					},
+				},
 			},
 		})
 	}
 
-	async createPost(userId: number, dto: CreatePostDto): Promise<Post> {
+	async createPost(userId: number, dto: CreatePostDto, image: Express.Multer.File): Promise<Post> {
+		const loadedImage = await this.filesService.uploadFileToFirebase(image)
+
 		return this.prisma.post.create({
 			data: {
 				title: dto.title,
 				content: dto.title,
+				imageUrl: loadedImage.url,
 				author: {
 					connect: {
 						id: userId,
@@ -65,7 +95,12 @@ export class PostService {
 	}
 
 	async toggleLike(userId: number, postId: number): Promise<Post> {
-		const post = await this.getPostById(postId)
+		const post = await this.prisma.post.findUniqueOrThrow({
+			where: { id: postId },
+			include: {
+				likes: true,
+			},
+		})
 
 		const isLiked = post.likes.some(user => user.id === userId)
 
@@ -79,8 +114,8 @@ export class PostService {
 				},
 			},
 			include: {
-				likes: {
-					select: ReturnUserObject,
+				_count: {
+					select: { likes: true },
 				},
 			},
 		})

@@ -7,6 +7,6 @@ export const ReturnUserObject: Prisma.UserSelect = {
 	updatedAt: true,
 	roles: true,
 	comments: true,
-	likedPosts: true,
-	posts: true,
+	likedPosts: false,
+	posts: false,
 }

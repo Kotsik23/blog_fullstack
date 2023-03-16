@@ -29,6 +29,7 @@ model Post {
   updatedAt DateTime  @updatedAt @map("updated_at")
   title     String
   content   String
+  imageUrl  String    @default("https://firebasestorage.googleapis.com/v0/b/blogging-a1f96.appspot.com/o/images%2Fe92e773d-aae7-45ab-b0cf-73e640eef51a?alt=media&token=db8a8b9c-c088-4fc6-b3d4-f2daa2c345a9") @map("image_url")
   author    User      @relation("author", fields: [userId], references: [id])
   userId    Int
   likes     User[]
