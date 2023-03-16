@@ -3,11 +3,14 @@ import { AppModule } from "./app.module"
 import { ValidationPipe } from "@nestjs/common"
 import * as cookieParser from "cookie-parser"
 import { PrismaClientKnowRequestErrorFilter } from "./filters/PrismaClientKnowRequestErrorFilter"
+import { initializeApp } from "firebase/app"
+import { firebaseConfig } from "./config/firebase.config"
 
 async function bootstrap() {
 	const PORT = process.env.PORT || 8001
 
 	const app = await NestFactory.create(AppModule)
+	initializeApp(firebaseConfig)
 
 	app.setGlobalPrefix("api")
 	app.enableCors({
