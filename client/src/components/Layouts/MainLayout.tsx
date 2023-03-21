@@ -7,7 +7,7 @@ const MainLayout: FC = () => {
 	return (
 		<>
 			<Navbar />
-			<Container maxW="container.xl">
+			<Container maxW="container.xl" as="main" py="16">
 				<Outlet />
 			</Container>
 		</>

@@ -10,7 +10,7 @@ const Navbar: FC = () => {
 	// Styles
 	const borderBottomColor = useColorModeValue("blackAlpha.300", "whiteAlpha.300")
 	return (
-		<Box w="full" borderBottom="1px solid" borderBottomColor={borderBottomColor}>
+		<Box w="full" borderBottom="1px solid" borderBottomColor={borderBottomColor} as="nav">
 			<Container maxW="container.xl" py="3" px="8" display="flex" justifyContent="space-between" alignItems="center">
 				<Logo />
 

@@ -1,0 +1,73 @@
+.purple {
+	position: absolute;
+	width: 350px;
+	height: 350px;
+	border-radius: 9999px;
+	mix-blend-mode: multiply;
+	filter: blur(24px);
+	opacity: 0.6;
+	top: 0;
+	left: -140px;
+	background-color: #9f7aea;
+	animation: blob 4s infinite;
+}
+
+.yellow {
+	position: absolute;
+	width: 350px;
+	height: 350px;
+	border-radius: 9999px;
+	mix-blend-mode: multiply;
+	filter: blur(24px);
+	opacity: 0.6;
+	top: 60px;
+	left: 0;
+	background-color: #ecc94b;
+	animation: blob 4s infinite;
+	animation-delay: 2000ms;
+}
+
+.pink {
+	position: absolute;
+	width: 350px;
+	height: 350px;
+	border-radius: 9999px;
+	mix-blend-mode: multiply;
+	filter: blur(24px);
+	opacity: 0.6;
+	top: 0;
+	left: 140px;
+	background-color: #ed64a6;
+	animation: blob 4s infinite;
+	animation-delay: 1000ms;
+}
+
+html[data-theme="dark"] .pink {
+	background-color: #f687b3;
+}
+
+html[data-theme="dark"] .purple {
+	background-color: #b794f4;
+}
+
+html[data-theme="dark"] .yellow {
+	background-color: #f6e05e;
+}
+
+@keyframes blob {
+	0% {
+		transform: translate(0, 0) scale(1);
+	}
+
+	33% {
+		transform: translate(30px, -50px) scale(1.1);
+	}
+
+	66% {
+		transform: translate(-20px, 20px) scale(0.9);
+	}
+
+	100% {
+		transform: translate(0, 0) scale(1);
+	}
+}
