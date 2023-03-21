@@ -4,6 +4,8 @@ export enum API_ROUTES {
 	REGISTER = "/auth/register",
 	PROFILE = "/auth/profile",
 	REFRESH = "/auth/refresh",
+
+	POSTS = "/posts",
 }
 
 export enum API_METHODS {

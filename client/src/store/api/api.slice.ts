@@ -15,7 +15,7 @@ const baseQuery = fetchBaseQuery({
 		const accessToken = (api.getState() as RootState).auth.accessToken
 
 		if (accessToken) {
-			headers.set("authorizaton", `Bearer ${accessToken}`)
+			headers.set("authorization", `Bearer ${accessToken}`)
 		}
 
 		return headers
@@ -29,13 +29,14 @@ const baseQueryWithRefresh = async (args: any, api: BaseQueryApi, extraOptions: 
 		console.log("Sending refresh token...")
 
 		const refreshResult = await baseQuery(API_ROUTES.REFRESH, api, extraOptions)
+		console.log(refreshResult)
 
 		if (refreshResult?.data) {
-			api.dispatch(authActions.setCredentials(refreshResult.data))
+			api.dispatch(authActions.setCredentials({ ...refreshResult.data }))
 			result = await baseQuery(args, api, extraOptions)
 		} else {
 			if (refreshResult.error?.status === 401) {
-				console.log("Your login has exoired")
+				console.log("Your login has expired")
 			}
 			return refreshResult
 		}
@@ -48,5 +49,5 @@ export const apiSlice = createApi({
 	reducerPath: "api/slice",
 	baseQuery: baseQueryWithRefresh,
 	endpoints: build => ({}),
-	tagTypes: [],
+	tagTypes: ["Post"],
 })
