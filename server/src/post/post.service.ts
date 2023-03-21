@@ -45,11 +45,6 @@ export class PostService {
 						email: true,
 					},
 				},
-				_count: {
-					select: {
-						likes: true,
-					},
-				},
 				comments: {
 					include: {
 						user: {
@@ -58,6 +53,13 @@ export class PostService {
 								email: true,
 							},
 						},
+					},
+				},
+				likes: {
+					select: {
+						id: true,
+						email: true,
+						roles: true,
 					},
 				},
 			},
