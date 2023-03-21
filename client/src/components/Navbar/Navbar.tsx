@@ -9,6 +9,8 @@ import ThemeSwitcher from "./ThemeSwitcher/ThemeSwitcher"
 const Navbar: FC = () => {
 	// Styles
 	const borderBottomColor = useColorModeValue("blackAlpha.300", "whiteAlpha.300")
+	const linkHoverColor = useColorModeValue("purple.500", "purple.200")
+
 	return (
 		<Box w="full" borderBottom="1px solid" borderBottomColor={borderBottomColor} as="nav">
 			<Container maxW="container.xl" py="3" px="8" display="flex" justifyContent="space-between" alignItems="center">
@@ -16,7 +18,14 @@ const Navbar: FC = () => {
 
 				<Flex align="center" gap={[6, null, null, 10]}>
 					{MenuItems.map(item => (
-						<Link key={item.id} as={NavLink} to={item.link} fontSize="md">
+						<Link
+							key={item.id}
+							as={NavLink}
+							to={item.link}
+							fontSize="md"
+							transition="color 0.3s ease"
+							_hover={{ color: linkHoverColor }}
+						>
 							{item.text}
 						</Link>
 					))}

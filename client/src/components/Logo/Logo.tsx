@@ -10,7 +10,7 @@ const Logo: FC = () => {
 			size="md"
 			fontWeight="semibold"
 			_hover={{ color: hoverColor }}
-			transition="color 100ms linear"
+			transition="color 0.3s ease"
 			fontFamily="'Amatic SC', sans-serif"
 			fontSize={"4xl"}
 		>
