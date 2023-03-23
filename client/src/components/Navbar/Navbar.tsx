@@ -5,11 +5,11 @@ import { Link as NavLink } from "react-router-dom"
 import LanguageSwithcer from "./LanguageSwithcer/LanguageSwithcer"
 import { MenuItems } from "./Navbar.constants"
 import ThemeSwitcher from "./ThemeSwitcher/ThemeSwitcher"
+import { ROUTES } from "../../constants/routes.constants"
 
 const Navbar: FC = () => {
 	// Styles
 	const borderBottomColor = useColorModeValue("blackAlpha.300", "whiteAlpha.300")
-	const linkHoverColor = useColorModeValue("purple.500", "purple.200")
 
 	return (
 		<Box w="full" borderBottom="1px solid" borderBottomColor={borderBottomColor} as="nav">
@@ -24,7 +24,7 @@ const Navbar: FC = () => {
 							to={item.link}
 							fontSize="md"
 							transition="color 0.3s ease"
-							_hover={{ color: linkHoverColor }}
+							_hover={{ color: "primary" }}
 						>
 							{item.text}
 						</Link>
@@ -34,7 +34,9 @@ const Navbar: FC = () => {
 				<Flex gap="2" align="center">
 					<LanguageSwithcer />
 					<ThemeSwitcher />
-					<Button colorScheme="purple">Регистрация</Button>
+					<Button colorScheme="purple" as={NavLink} to={ROUTES.REGISTER}>
+						Регистрация
+					</Button>
 				</Flex>
 			</Container>
 		</Box>

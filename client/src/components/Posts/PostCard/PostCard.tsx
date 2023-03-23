@@ -24,7 +24,7 @@ const PostCard: FC<IPostCardProps> = ({ post }) => {
 	const contentColor = useColorModeValue("gray.500", "gray.200")
 
 	return (
-		<Flex direction="column" as="section" cursor="pointer">
+		<Flex direction="column" as="article" role="group">
 			<Image src={post.imageUrl} alt={post.title} h="100%" objectFit="cover" />
 			<Stack spacing="3" w="full" alignItems="flex-start" mt="8">
 				<Text fontWeight="semibold" color={authorDateTextColor}>
@@ -35,8 +35,13 @@ const PostCard: FC<IPostCardProps> = ({ post }) => {
 				</Text>
 				<Flex align="center" justify="space-between" w="full">
 					<Heading size="md">{post.title}</Heading>
-					<Link as={NavLink} to={"/"} alignSelf="flex-start">
-						<ExternalLinkIcon fontSize="lg" />
+					<Link
+						as={NavLink}
+						to={"/"}
+						alignSelf="flex-start"
+						_groupHover={{ transform: "scale(1.3) rotate(12deg)" }}
+					>
+						<ExternalLinkIcon fontSize="xl" />
 					</Link>
 				</Flex>
 

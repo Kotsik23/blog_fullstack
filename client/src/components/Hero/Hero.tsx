@@ -1,7 +1,9 @@
-import { Button, Flex, Heading, Text, useColorModeValue, Image, Stack, Badge } from "@chakra-ui/react"
+import { Button, Flex, Heading, Text, useColorModeValue, Image, Badge } from "@chakra-ui/react"
 import { FC } from "react"
 import { ArrowForwardIcon, ArrowDownIcon } from "@chakra-ui/icons"
+import { Link as NavLink } from "react-router-dom"
 import GlowingBalls from "./GlowingBalls/GlowingBalls"
+import { ROUTES } from "../../constants/routes.constants"
 
 const Hero: FC = () => {
 	const sloganTextColor = useColorModeValue("gray.600", "gray.200")
@@ -31,7 +33,14 @@ const Hero: FC = () => {
 				</Text>
 
 				<Flex align="center" gap="6" mt="8">
-					<Button colorScheme="purple" rightIcon={<ArrowForwardIcon />} flex="1" size="lg">
+					<Button
+						colorScheme="purple"
+						rightIcon={<ArrowForwardIcon />}
+						flex="1"
+						size="lg"
+						as={NavLink}
+						to={ROUTES.REGISTER}
+					>
 						Начать
 					</Button>
 					<Button variant="outline" rightIcon={<ArrowDownIcon />} flex="1" size="lg">
