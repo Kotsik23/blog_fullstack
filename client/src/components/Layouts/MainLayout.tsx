@@ -1,9 +1,8 @@
 import { Container } from "@chakra-ui/react"
-import { FC } from "react"
 import { Outlet } from "react-router-dom"
-import Navbar from "../Navbar/Navbar"
+import { Navbar } from "../../modules/Navbar"
 
-const MainLayout: FC = () => {
+const MainLayout = () => {
 	return (
 		<>
 			<Navbar />

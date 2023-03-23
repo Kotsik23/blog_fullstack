@@ -1,6 +1,6 @@
 import { RootState } from "../index"
 import { API_METHODS, API_ROUTES } from "../../constants/api.constants"
-import { IAuthFields, IAuthResponse } from "../../shared/types/auth.interface"
+import { IAuthFields, IAuthResponse } from "../../modules/AuthForm/shared/types/auth.interface"
 import { authActions } from "../slices/auth.slice"
 import { apiSlice } from "./api.slice"
 import { IUser } from "../../shared/types/user.interface"

@@ -1,8 +1,8 @@
 import { Route, Routes } from "react-router-dom"
-import AuthForm from "./components/AuthForm/AuthForm"
 import MainLayout from "./components/Layouts/MainLayout"
 import { ROUTES } from "./constants/routes.constants"
-import MainPage from "./pages/MainPage/MainPage"
+import {MainPage} from "./pages/MainPage";
+import {AuthForm} from "./modules/AuthForm";
 
 const App = () => {
 	return (

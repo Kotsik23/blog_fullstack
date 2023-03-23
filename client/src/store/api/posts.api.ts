@@ -1,5 +1,5 @@
 import { API_METHODS, API_ROUTES } from "../../constants/api.constants"
-import { IPost, IPostAll, IPostOne } from "../../shared/types/post.interface"
+import { IPost, IPostAll, IPostOne } from "../../modules/Posts/shared/types/post.interface"
 import { apiSlice } from "./api.slice"
 
 export const postsApi = apiSlice.injectEndpoints({

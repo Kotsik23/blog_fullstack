@@ -1,9 +1,8 @@
 import { Heading } from "@chakra-ui/react"
-import { FC } from "react"
 import { Link } from "react-router-dom"
 import { ROUTES } from "../../constants/routes.constants"
 
-const Logo: FC = () => {
+const Logo = () => {
 	return (
 		<Heading
 			size="md"
