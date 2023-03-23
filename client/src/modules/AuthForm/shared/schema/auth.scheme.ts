@@ -1,4 +1,4 @@
-import { object, ObjectSchema, string } from "yup"
+import { boolean, object, ObjectSchema, string } from "yup"
 import { IAuthFields } from "../types/auth.interface"
 
 export const authScheme: ObjectSchema<IAuthFields> = object({
@@ -7,4 +7,5 @@ export const authScheme: ObjectSchema<IAuthFields> = object({
 		.required("Password is a required field")
 		.min(3, "Password is too short")
 		.max(50, "Password is too long"),
+	isRemember: boolean(),
 })

@@ -8,7 +8,7 @@ const styles = {
 		},
 		"*::placeholder": {
 			opacity: 1,
-			color: mode("gray.600", "gray.300")(props),
+			color: mode("gray.400", "gray.500")(props),
 		},
 		"*, *::before, &::after": {
 			borderColor: mode("gray.200", "gray.700")(props),

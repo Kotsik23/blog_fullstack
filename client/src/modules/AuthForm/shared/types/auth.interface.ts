@@ -3,6 +3,7 @@ import { IUser } from "../../../../shared/types/user.interface"
 export interface IAuthFields {
 	email: string
 	password: string
+	isRemember?: boolean
 }
 
 export interface IAuthResponse {
