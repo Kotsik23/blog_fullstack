@@ -18,7 +18,7 @@ const PasswordField = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
 	const primary = useColorModeValue("purple.500", "purple.200")
 
 	return (
-		<FormControl>
+		<FormControl isRequired>
 			<FormLabel htmlFor="password">Пароль</FormLabel>
 			<InputGroup>
 				<InputRightElement>
@@ -32,10 +32,8 @@ const PasswordField = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
 				<Input
 					id="password"
 					ref={ref}
-					name="password"
 					type={isOpen ? "text" : "password"}
 					autoComplete="current-password"
-					required
 					focusBorderColor={primary}
 					{...props}
 				/>

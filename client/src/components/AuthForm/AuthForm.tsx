@@ -12,6 +12,7 @@ import {
 	Checkbox,
 	Container,
 	FormControl,
+	FormErrorMessage,
 	FormLabel,
 	Heading,
 	HStack,
@@ -101,11 +102,12 @@ const AuthForm: FC<IAuthFormProps> = ({ type }) => {
 				>
 					<Stack spacing="6">
 						<Stack spacing="5">
-							<FormControl>
+							<FormControl isInvalid={!!errors.email} isRequired>
 								<FormLabel htmlFor="email">E-mail</FormLabel>
 								<Input id="email" type="email" focusBorderColor={primary} {...registerField("email")} />
+								<FormErrorMessage>{errors.email?.message}</FormErrorMessage>
 							</FormControl>
-							<PasswordField {...registerField("password")} />
+							<PasswordField {...registerField("password")} isInvalid={!!errors.password} />
 						</Stack>
 						<HStack justify="space-between">
 							<Checkbox defaultChecked={false} colorScheme="purple">
