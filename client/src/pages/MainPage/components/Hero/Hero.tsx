@@ -43,7 +43,7 @@ const Hero = () => {
 						Начать
 					</Button>
 					<Button variant="outline" rightIcon={<ArrowDownIcon />} flex="1" size="lg">
-						Все посты
+						Подробнее
 					</Button>
 				</Flex>
 			</Flex>
