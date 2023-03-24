@@ -1,65 +1,58 @@
-import {
-	Flex,
-	Heading,
-	HStack,
-	Image,
-	Link,
-	Stack,
-	Tag,
-	TagLabel,
-	TagLeftIcon,
-	Text,
-	useColorModeValue,
-} from "@chakra-ui/react"
-import format from "date-fns/format"
-import { ru } from "date-fns/locale"
+import { Box, Heading, HStack, Image, Link, Stack, Tag, TagLabel, TagLeftIcon, Text, Icon } from "@chakra-ui/react"
 import { IPostCardProps } from "./PostCard.types"
-import { Link as NavLink } from "react-router-dom"
 import { ExternalLinkIcon } from "@chakra-ui/icons"
 import { MdComment, MdFavorite } from "react-icons/md"
+import { VscCircleFilled } from "react-icons/vsc"
+import { formatDate } from "../../helpers/formatDate"
 
-const PostCard = ({ post }: IPostCardProps) => {
-	const authorDateTextColor = useColorModeValue("purple.500", "purple.200")
-	const contentColor = useColorModeValue("gray.500", "gray.200")
+const PostCard = (props: IPostCardProps) => {
+	const { post, isHero } = props
 
 	return (
-		<Flex direction="column" as="article" role="group">
-			<Image src={post.imageUrl} alt={post.title} h="100%" objectFit="cover" />
-			<Stack spacing="3" w="full" alignItems="flex-start" mt="8">
-				<Text fontWeight="semibold" color={authorDateTextColor}>
-					<Link as={NavLink} to={"/email"}>
-						{post.author.email}
-					</Link>{" "}
-					• {format(new Date(post.createdAt), "dd MMMM yyyy", { locale: ru })}
-				</Text>
-				<Flex align="center" justify="space-between" w="full">
-					<Heading size="md">{post.title}</Heading>
-					<Link
-						as={NavLink}
-						to={"/"}
-						alignSelf="flex-start"
-						_groupHover={{ transform: "scale(1.3) rotate(12deg)" }}
-					>
-						<ExternalLinkIcon fontSize="xl" />
-					</Link>
-				</Flex>
-
-				<Text color={contentColor} fontWeight="semibold" noOfLines={2}>
-					{post.content}
-				</Text>
-
-				<HStack spacing="3">
-					<Tag size={"md"} variant="subtle" colorScheme="purple">
-						<TagLeftIcon boxSize="12px" as={MdComment} />
-						<TagLabel>{post._count.comments}</TagLabel>
-					</Tag>
-					<Tag size={"md"} variant="subtle" colorScheme="orange">
-						<TagLeftIcon boxSize="12px" as={MdFavorite} />
-						<TagLabel>{post._count.likes}</TagLabel>
-					</Tag>
-				</HStack>
+		<Link _hover={{ textDecor: "none" }} role="group" as="article">
+			<Stack spacing="8">
+				<Box overflow="hidden">
+					<Image
+						src={post.imageUrl}
+						alt={post.title}
+						width="full"
+						height={{ base: "15rem", md: isHero ? "md" : "15rem" }}
+						objectFit="cover"
+						transition="all 0.2s"
+						_groupHover={{ transform: "scale(1.05)" }}
+					/>
+				</Box>
+				<Stack spacing="4">
+					<HStack spacing="1" fontSize="sm" fontWeight="semibold" color="primary">
+						<Text>{post.author.email}</Text>
+						<Icon as={VscCircleFilled} boxSize="2" />
+						<Text> {formatDate(post.createdAt)}</Text>
+					</HStack>
+					<HStack justify="space-between">
+						<Heading size={{ base: "sm", md: isHero ? "lg" : "md" }}>{post.title}</Heading>
+						<Icon
+							as={ExternalLinkIcon}
+							_groupHover={{ transform: "scale(1.3) rotate(12deg)" }}
+							transition="all 0.2s ease"
+							alignSelf="flex-start"
+						/>
+					</HStack>
+					<Text color="muted" fontWeight="semibold" noOfLines={2} fontSize="sm">
+						{post.content}
+					</Text>
+					<HStack spacing="3">
+						<Tag size={"md"} variant="subtle" colorScheme="cyan">
+							<TagLeftIcon boxSize="12px" as={MdComment} />
+							<TagLabel>{post._count.comments}</TagLabel>
+						</Tag>
+						<Tag size={"md"} variant="subtle" colorScheme="orange">
+							<TagLeftIcon boxSize="12px" as={MdFavorite} />
+							<TagLabel>{post._count.likes}</TagLabel>
+						</Tag>
+					</HStack>
+				</Stack>
 			</Stack>
-		</Flex>
+		</Link>
 	)
 }
 

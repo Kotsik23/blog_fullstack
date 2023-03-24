@@ -16,6 +16,10 @@ const semanticTokens = {
 			default: "gray.600",
 			_dark: "gray.300",
 		},
+		"on-primary": {
+			default: "white",
+			_dark: "black",
+		},
 	},
 	shadows: {
 		"xs-custom": {

@@ -77,24 +77,22 @@ const AuthForm = ({ type }: IAuthFormProps) => {
 	const primary = useColorModeValue("purple.500", "purple.200")
 
 	return (
-		<Center minH="calc(80vh)">
+		<Center>
 			<Container maxW="lg" py={{ base: "12", md: "24" }} px={{ base: "0", sm: "8" }}>
 				<Stack spacing="8">
-					<Stack spacing="6">
-						<Stack spacing={{ base: "2", md: "3" }} textAlign="center">
-							<Heading size="lg">{isLogin ? "Вход в систему" : "Создание аккаунта"}</Heading>
-							<HStack spacing="1" justify="center">
-								<Text color="muted">{isLogin ? "Еще нет аккаунта?" : "Уже есть аккаунт?"}</Text>
-								<Button
-									variant="link"
-									colorScheme="purple"
-									as={NavLink}
-									to={isLogin ? ROUTES.REGISTER : ROUTES.LOGIN}
-								>
-									{isLogin ? "Создание аккаунта" : "Вход в систему"}
-								</Button>
-							</HStack>
-						</Stack>
+					<Stack spacing={{ base: "2", md: "3" }} textAlign="center">
+						<Heading size="lg">{isLogin ? "Вход в систему" : "Создание аккаунта"}</Heading>
+						<HStack spacing="1" justify="center">
+							<Text color="muted">{isLogin ? "Еще нет аккаунта?" : "Уже есть аккаунт?"}</Text>
+							<Button
+								variant="link"
+								colorScheme="purple"
+								as={NavLink}
+								to={isLogin ? ROUTES.REGISTER : ROUTES.LOGIN}
+							>
+								{isLogin ? "Создание аккаунта" : "Вход в систему"}
+							</Button>
+						</HStack>
 					</Stack>
 					<Box
 						py={{ base: "0", sm: "8" }}

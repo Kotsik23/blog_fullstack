@@ -14,18 +14,21 @@ const Footer = () => {
 							href="https://www.linkedin.com/in/oleg-smushko-57a722224/"
 							aria-label="LinkedIn"
 							icon={<FaLinkedin fontSize="1.25rem" />}
+							target="_blank"
 						/>
 						<IconButton
 							as="a"
 							href="https://github.com/Kotsik23"
 							aria-label="GitHub"
 							icon={<FaGithub fontSize="1.25rem" />}
+							target="_blank"
 						/>
 						<IconButton
 							as="a"
 							href="https://t.me/kotsik"
 							aria-label="Telegram"
 							icon={<FaTelegramPlane fontSize="1.25rem" />}
+							target="_blank"
 						/>
 					</ButtonGroup>
 				</Stack>
