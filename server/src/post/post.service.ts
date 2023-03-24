@@ -72,7 +72,7 @@ export class PostService {
 		return this.prisma.post.create({
 			data: {
 				title: dto.title,
-				content: dto.title,
+				content: dto.content,
 				imageUrl: loadedImage.url,
 				author: {
 					connect: {
