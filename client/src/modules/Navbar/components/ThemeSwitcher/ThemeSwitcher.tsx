@@ -6,7 +6,7 @@ const ThemeSwitcher = () => {
 	return (
 		<IconButton
 			onClick={toggleColorMode}
-			icon={colorMode === "dark" ? <MoonIcon /> : <SunIcon />}
+			icon={colorMode === "dark" ? <SunIcon /> : <MoonIcon />}
 			aria-label="theme-switcher"
 			variant="outline"
 		/>

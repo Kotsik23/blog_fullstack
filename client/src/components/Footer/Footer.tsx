@@ -33,7 +33,7 @@ const Footer = () => {
 					</ButtonGroup>
 				</Stack>
 				<Text fontSize="sm" color="subtle">
-					&copy; {new Date().getFullYear()} Блоггинг, Tom Inc. Все права защищены.
+					&copy; {new Date().getFullYear()} Блоггинг, Example Inc. Все права защищены.
 				</Text>
 			</Stack>
 		</Container>

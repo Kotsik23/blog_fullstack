@@ -116,7 +116,7 @@ const AuthForm = ({ type }: IAuthFormProps) => {
 									name="password"
 									title="Пароль"
 									type="password"
-									placeholder="qwerty"
+									placeholder="••••••"
 									focusBorderColor={primary}
 								/>
 							</Stack>
