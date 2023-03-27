@@ -15,7 +15,7 @@ export const MenuItems: IMenuItem[] = [
 	{
 		id: 2,
 		text: "Новости",
-		link: "/",
+		link: ROUTES.POSTS,
 	},
 	{
 		id: 3,

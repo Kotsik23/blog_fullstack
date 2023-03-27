@@ -1,12 +1,18 @@
-import { Box, Button, Container, Flex, Link, useColorModeValue } from "@chakra-ui/react"
-import { Link as NavLink } from "react-router-dom"
+import { Box, Button, chakra, Container, Flex, Text, useColorModeValue } from "@chakra-ui/react"
+import { NavLink } from "react-router-dom"
 import Logo from "../../../../components/Logo/Logo"
 import { MenuItems } from "../../constants/Navbar.constants"
 import LanguageSwithcer from "../LanguageSwithcer/LanguageSwithcer"
 import ThemeSwitcher from "../ThemeSwitcher/ThemeSwitcher"
 import { ROUTES } from "../../../../constants/routes.constants"
+import { useAppSelector } from "../../../../hooks/redux"
+import ProfileAvatar from "../ProfileAvatar/ProfileAvatar"
+
+const ChakraNavLink = chakra(NavLink)
 
 const Navbar = () => {
+	const user = useAppSelector(state => state.auth.user)
+
 	const borderBottomColor = useColorModeValue("blackAlpha.300", "whiteAlpha.300")
 
 	return (
@@ -16,25 +22,29 @@ const Navbar = () => {
 
 				<Flex align="center" gap={{ base: 6, lg: 8 }}>
 					{MenuItems.map(item => (
-						<Link
+						<ChakraNavLink
 							key={item.id}
-							as={NavLink}
 							to={item.link}
 							fontSize="md"
+							fontWeight="semibold"
 							transition="color 0.3s ease"
 							_hover={{ color: "primary" }}
 						>
-							{item.text}
-						</Link>
+							{({ isActive }) => <Text color={isActive ? "primary" : ""}>{item.text}</Text>}
+						</ChakraNavLink>
 					))}
 				</Flex>
 
 				<Flex gap="2" align="center">
 					<LanguageSwithcer />
 					<ThemeSwitcher />
-					<Button colorScheme="purple" as={NavLink} to={ROUTES.REGISTER}>
-						Регистрация
-					</Button>
+					{user ? (
+						<ProfileAvatar />
+					) : (
+						<Button colorScheme="purple" as={NavLink} to={ROUTES.REGISTER}>
+							Регистрация
+						</Button>
+					)}
 				</Flex>
 			</Container>
 		</Box>

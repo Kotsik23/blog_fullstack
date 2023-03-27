@@ -21,6 +21,7 @@ import { IAuthFormProps } from "../../shared/types/AuthForm.types"
 import { authApi } from "../../../../store/api/auth.api"
 import { ROUTES } from "../../../../constants/routes.constants"
 import CustomInput from "../../../../components/CustomInput/CustomInput"
+import { TOAST_DEFAULT_OPTIONS } from "../../../../constants/toast.constants"
 
 const AuthForm = ({ type }: IAuthFormProps) => {
 	const {
@@ -38,12 +39,7 @@ const AuthForm = ({ type }: IAuthFormProps) => {
 		},
 	})
 
-	const toast = useToast({
-		isClosable: true,
-		duration: 4000,
-		position: "top-right",
-		variant: "solid",
-	})
+	const toast = useToast(TOAST_DEFAULT_OPTIONS)
 	const navigate = useNavigate()
 	const location = useLocation()
 	const from = location.state?.from.pathname
@@ -55,7 +51,6 @@ const AuthForm = ({ type }: IAuthFormProps) => {
 
 	const onSubmitHandler: SubmitHandler<IAuthFields> = async data => {
 		try {
-			console.log(data)
 			isLogin ? await login(data).unwrap() : await register(data).unwrap()
 			toast({
 				title: "Успешно",
@@ -65,7 +60,6 @@ const AuthForm = ({ type }: IAuthFormProps) => {
 			reset()
 			navigate(from || ROUTES.MAIN)
 		} catch (error) {
-			console.log(error)
 			toast({
 				title: (error as IAuthError).data.error || "Bad request",
 				description: (error as IAuthError).data.message && (error as IAuthError).data.message,
