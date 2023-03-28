@@ -1,11 +1,11 @@
-import { Route, Routes } from "react-router-dom"
-import MainLayout from "./components/Layouts/MainLayout"
-import { MainPage } from "./pages/MainPage"
+import MainLayout from "components/Layouts/MainLayout"
 import { Auth } from "features/Auth"
+import { Routes, Route } from "react-router-dom"
 import { ROUTES } from "shared/constants/routes"
-import { PostsPage } from "pages/PostsPage"
+import { MainPage } from "./MainPage"
+import { PostsPage } from "./PostsPage"
 
-const App = () => {
+const Routing = () => {
 	return (
 		<Routes>
 			<Route path={ROUTES.MAIN} element={<MainLayout />}>
@@ -20,4 +20,4 @@ const App = () => {
 	)
 }
 
-export default App
+export default Routing
