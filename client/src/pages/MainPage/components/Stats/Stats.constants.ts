@@ -1,4 +1,4 @@
-import { IStat } from "./StatItem/StatItem.type"
+import { IStat } from "./StatItem/StatItem.props"
 
 export const stats: IStat[] = [
 	{

@@ -1,0 +1,30 @@
+import { ROUTES } from "shared/constants/routes"
+
+interface IMenuItem {
+	id: number
+	text: string
+	link: string
+}
+
+export const MenuItems: IMenuItem[] = [
+	{
+		id: 1,
+		text: "Главная",
+		link: ROUTES.MAIN,
+	},
+	{
+		id: 2,
+		text: "Новости",
+		link: ROUTES.POSTS,
+	},
+	{
+		id: 3,
+		text: "Контакты",
+		link: "/",
+	},
+	{
+		id: 4,
+		text: "Галерея",
+		link: "/",
+	},
+]

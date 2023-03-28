@@ -2,7 +2,7 @@ import { Button, Flex, Heading, Text, useColorModeValue, Image, Badge } from "@c
 import { ArrowForwardIcon, ArrowDownIcon } from "@chakra-ui/icons"
 import { Link as NavLink } from "react-router-dom"
 import GlowingBalls from "./GlowingBalls/GlowingBalls"
-import { ROUTES } from "../../../../constants/routes.constants"
+import { ROUTES } from "shared/constants/routes"
 
 const Hero = () => {
 	const sloganTextColor = useColorModeValue("gray.600", "gray.200")

@@ -1,9 +1,9 @@
 import { Route, Routes } from "react-router-dom"
 import MainLayout from "./components/Layouts/MainLayout"
-import { ROUTES } from "./constants/routes.constants"
-import {MainPage} from "./pages/MainPage";
-import {AuthForm} from "./modules/AuthForm";
-import {Posts} from "./modules/Posts";
+import { MainPage } from "./pages/MainPage"
+import { Auth } from "features/Auth"
+import { ROUTES } from "shared/constants/routes"
+import { PostsPage } from "pages/PostsPage"
 
 const App = () => {
 	return (
@@ -11,10 +11,10 @@ const App = () => {
 			<Route path={ROUTES.MAIN} element={<MainLayout />}>
 				<Route index element={<MainPage />} />
 
-				<Route path={ROUTES.LOGIN} element={<AuthForm type="login" />} />
-				<Route path={ROUTES.REGISTER} element={<AuthForm type="register" />} />
+				<Route path={ROUTES.LOGIN} element={<Auth type="login" />} />
+				<Route path={ROUTES.REGISTER} element={<Auth type="register" />} />
 
-				<Route path={ROUTES.POSTS} element={<Posts />}/>
+				<Route path={ROUTES.POSTS} element={<PostsPage />} />
 			</Route>
 		</Routes>
 	)

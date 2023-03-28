@@ -1,5 +1,5 @@
 import { Stack, Heading, Text } from "@chakra-ui/react"
-import { StatItemProps } from "./StatItem.type"
+import { StatItemProps } from "./StatItem.props"
 
 const StatItem = (props: StatItemProps) => {
 	const { label, value, ...stackProps } = props

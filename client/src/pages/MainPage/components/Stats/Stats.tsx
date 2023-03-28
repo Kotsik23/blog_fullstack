@@ -1,4 +1,4 @@
-import { useBreakpointValue, Container, Stack, Heading, StackDivider, Box, Text } from "@chakra-ui/react"
+import { useBreakpointValue, Container, Stack, Heading, StackDivider, Text } from "@chakra-ui/react"
 import StatItem from "./StatItem/StatItem"
 import { stats } from "./Stats.constants"
 

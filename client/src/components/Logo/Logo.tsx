@@ -1,6 +1,6 @@
 import { Heading } from "@chakra-ui/react"
 import { Link } from "react-router-dom"
-import { ROUTES } from "../../constants/routes.constants"
+import { ROUTES } from "shared/constants/routes"
 
 const Logo = () => {
 	return (
