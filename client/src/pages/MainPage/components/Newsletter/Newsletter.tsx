@@ -18,7 +18,7 @@ const Newsletter = () => {
 	return (
 		<Container maxW="container.xl" py={{ base: "16", md: "24" }} as="section">
 			<Stack
-				spacing={{ base: "0", sm: "12", md: "16" }}
+				spacing={{ base: "6", sm: "12", md: "16" }}
 				direction={{ base: "column", md: "row" }}
 				align={{ base: "start", md: "center" }}
 			>
@@ -43,8 +43,8 @@ const Newsletter = () => {
 					<Image
 						boxSize="full"
 						alt="Subscribe to newsletter image"
-						src="./assets/newsletter.svg"
-						objectFit="contain"
+						src="./assets/newsletter.jpg"
+						objectFit="cover"
 					/>
 				</Box>
 			</Stack>

@@ -1,4 +1,4 @@
-import MainLayout from "components/Layouts/MainLayout"
+import MainLayout from "components/Layout/MainLayout"
 import { Auth } from "features/Auth"
 import { Routes, Route } from "react-router-dom"
 import { ROUTES } from "shared/constants/routes"
