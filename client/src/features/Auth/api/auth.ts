@@ -1,4 +1,4 @@
-import { IAuthFields, IAuthResponse } from "../components/Auth/auth.interface"
+import { IAuthFields, IAuthResponse } from "../types/auth.interface"
 import { authActions } from "features/Auth/model/auth"
 import { apiSlice } from "app/api/api.slice"
 import { API_ROUTES, API_METHODS } from "shared/constants/api"

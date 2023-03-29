@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom"
 import { ROUTES } from "shared/constants/routes"
 import { MainPage } from "./MainPage"
 import { PostsPage } from "./PostsPage"
+import ProfilePage from "./ProfilePage/components/ProfilePage/ProfilePage"
 
 const Routing = () => {
 	return (
@@ -15,6 +16,8 @@ const Routing = () => {
 				<Route path={ROUTES.REGISTER} element={<Auth type="register" />} />
 
 				<Route path={ROUTES.POSTS} element={<PostsPage />} />
+
+				<Route path={ROUTES.PROFILE} element={<ProfilePage />} />
 			</Route>
 		</Routes>
 	)

@@ -15,7 +15,7 @@ import {
 	useToast,
 } from "@chakra-ui/react"
 import { useLocation, useNavigate } from "react-router-dom"
-import { IAuthError, IAuthFields } from "./auth.interface"
+import { IAuthError, IAuthFields } from "../../types/auth.interface"
 import { authApi } from "features/Auth/api/auth"
 import CustomInput from "components/CustomInput/CustomInput"
 import { IAuthFormProps } from "./Auth.props"

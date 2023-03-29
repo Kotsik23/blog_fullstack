@@ -17,10 +17,10 @@ const Navbar = () => {
 
 	return (
 		<Box w="full" borderBottom="1px solid" borderBottomColor={borderBottomColor} as="nav">
-			<Container maxW="container.xl" py="3" px="8" display="flex" justifyContent="space-between" alignItems="center">
+			<Container maxW="container.xl" py="3" display="flex" justifyContent="space-between" alignItems="center">
 				<Logo />
 
-				<Flex align="center" gap={{ base: 6, lg: 8 }}>
+				<Flex align="center" gap={{ base: 6, lg: 8 }} display={{ base: "none", md: "flex" }}>
 					{MenuItems.map(item => (
 						<ChakraNavLink
 							key={item.id}

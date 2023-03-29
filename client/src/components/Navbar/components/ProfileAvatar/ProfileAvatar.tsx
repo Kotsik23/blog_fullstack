@@ -8,7 +8,7 @@ import {
 	useDisclosure,
 	useToast,
 } from "@chakra-ui/react"
-import { Link as NavLink } from "react-router-dom"
+import { Link as NavLink, useNavigate } from "react-router-dom"
 import { MdPerson, MdLogout } from "react-icons/md"
 import { TOAST_DEFAULT_OPTIONS } from "shared/constants/toast"
 import { authApi } from "features/Auth/api/auth"
@@ -19,6 +19,7 @@ const ProfileAvatar = () => {
 	const { isOpen, onOpen, onClose } = useDisclosure()
 	const [logout, { isLoading }] = authApi.useLogoutMutation()
 	const toast = useToast(TOAST_DEFAULT_OPTIONS)
+	const navigate = useNavigate()
 
 	const onLogoutHandler = async () => {
 		try {
@@ -28,6 +29,7 @@ const ProfileAvatar = () => {
 				title: "Успешно",
 				description: "Вы успешно вышли из своего аккаунта",
 			})
+			navigate(ROUTES.MAIN)
 		} catch (error) {
 			console.log(error)
 		}

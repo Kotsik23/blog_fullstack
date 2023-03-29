@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit"
-import { IAuthState } from "../components/Auth/auth.interface"
+import { IAuthState } from "../types/auth.interface"
 
 export const LS_AUTH_KEY = "auth"
 

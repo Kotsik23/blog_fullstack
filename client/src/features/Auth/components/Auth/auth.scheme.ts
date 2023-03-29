@@ -1,5 +1,5 @@
 import { boolean, object, ObjectSchema, string } from "yup"
-import { IAuthFields } from "./auth.interface"
+import { IAuthFields } from "../../types/auth.interface"
 
 export const authScheme: ObjectSchema<IAuthFields> = object({
 	email: string().required("Email is a required field").email("Please provide a correct email"),

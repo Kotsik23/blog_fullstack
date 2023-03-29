@@ -6,7 +6,7 @@ import Stats from "../Stats/Stats"
 
 const MainPage = () => {
 	return (
-		<Stack spacing="16">
+		<Stack spacing="16" py={{ base: "6", md: "12" }}>
 			<Hero />
 			<Stats />
 			<Testimonial />
