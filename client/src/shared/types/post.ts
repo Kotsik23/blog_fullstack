@@ -37,7 +37,7 @@ interface Statistics {
 	comments: number
 }
 
-interface Author {
+export interface Author {
 	id: number
 	email: string
 }

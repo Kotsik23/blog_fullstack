@@ -4,12 +4,14 @@ import { v4 as uuidv4 } from "uuid"
 
 const FOLDER = "images/"
 
+type FileVariant = "avatar" | "post" | "image"
+
 @Injectable()
 export class FileService {
-	async uploadFileToFirebase(file: Express.Multer.File) {
+	async uploadFileToFirebase(variant: FileVariant, file: Express.Multer.File) {
 		const storage = getStorage()
 		const uuidName = uuidv4()
-		const imageRef = ref(storage, FOLDER + uuidName)
+		const imageRef = ref(storage, FOLDER + variant + uuidName)
 
 		await uploadBytes(imageRef, file.buffer, {
 			contentType: file.mimetype,

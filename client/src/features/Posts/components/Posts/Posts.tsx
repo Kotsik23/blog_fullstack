@@ -21,7 +21,7 @@ const Posts = () => {
 	}
 
 	return (
-		<Box w="full" as="section">
+		<Box w="full" as="section" mt="8">
 			<Box bg="bg-surface" role="group">
 				<Container w="full" pt={{ base: "16", md: "24" }} pb={{ base: "32", md: "48" }}>
 					<Stack spacing={{ base: "4", md: "6" }} textAlign="center" alignItems="center">

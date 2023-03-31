@@ -27,6 +27,6 @@ export class FileController {
 		)
 		file: Express.Multer.File
 	) {
-		return this.fileService.uploadFileToFirebase(file)
+		return this.fileService.uploadFileToFirebase("image", file)
 	}
 }

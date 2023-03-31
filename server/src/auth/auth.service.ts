@@ -9,12 +9,14 @@ import { ITokensPayload } from "./interfaces/tokens-payload.interface"
 import { ITokensSet } from "./interfaces/tokens-set.interface"
 import { IAuthResponse } from "./interfaces/AuthResponse.interface"
 import { UpdateUserDto } from "../user/dto/update-user.dto"
+import { FileService } from "src/file/file.service"
 
 @Injectable()
 export class AuthService {
 	constructor(
 		private readonly userService: UserService,
-		private readonly jwtService: JwtService
+		private readonly jwtService: JwtService,
+		private readonly fileService: FileService
 	) {}
 
 	async register(dto: CreateUserDto, res: Response): Promise<IAuthResponse> {
@@ -117,6 +119,11 @@ export class AuthService {
 
 			return user
 		}
+	}
+
+	async updateProfileAvatar(id: number, avatar: Express.Multer.File) {
+		const loadedImage = await this.fileService.uploadFileToFirebase("avatar", avatar)
+		return await this.userService.updateUser(id, { avatarUrl: loadedImage.url })
 	}
 
 	async getProfile(req: Request): Promise<User> {

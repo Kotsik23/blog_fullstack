@@ -13,7 +13,7 @@ export const postsApi = apiSlice.injectEndpoints({
 				result ? [...result.map(({ id }) => ({ type: "Post" as const, id })), "Post"] : ["Post"],
 		}),
 
-		getPostById: build.query<IPostOne, number>({
+		getPostById: build.query<IPostOne, string>({
 			query: id => ({
 				url: `${API_ROUTES.POSTS}/${id}`,
 				method: API_METHODS.GET,

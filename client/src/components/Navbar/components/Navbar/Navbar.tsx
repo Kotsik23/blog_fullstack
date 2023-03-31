@@ -39,7 +39,7 @@ const Navbar = () => {
 					<LanguageSwithcer />
 					<ThemeSwitcher />
 					{user ? (
-						<ProfileAvatar />
+						<ProfileAvatar avatarUrl={user.avatarUrl} />
 					) : (
 						<Button colorScheme="purple" as={NavLink} to={ROUTES.REGISTER}>
 							Регистрация

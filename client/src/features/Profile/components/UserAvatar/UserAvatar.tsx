@@ -5,7 +5,7 @@ interface UserAvatarProps extends AvatarProps {
 	isVerified?: boolean
 }
 
-export const UserAvatar = (props: UserAvatarProps) => {
+const UserAvatar = (props: UserAvatarProps) => {
 	const { isVerified, ...avatarProps } = props
 
 	return (
@@ -18,3 +18,5 @@ export const UserAvatar = (props: UserAvatarProps) => {
 		</Avatar>
 	)
 }
+
+export default UserAvatar

@@ -1,10 +1,25 @@
-import { Body, Controller, Delete, Get, Patch, Post, Req, Res } from "@nestjs/common"
+import {
+	Body,
+	Controller,
+	Delete,
+	FileTypeValidator,
+	Get,
+	MaxFileSizeValidator,
+	ParseFilePipe,
+	Patch,
+	Post,
+	Req,
+	Res,
+	UploadedFile,
+	UseInterceptors,
+} from "@nestjs/common"
 import { AuthService } from "./auth.service"
 import { CreateUserDto } from "../user/dto/create-user.dto"
 import { Response, Request } from "express"
 import { Auth } from "./guards/auth.guard"
 import { CurrentUser } from "./decorators/current-user.decorator"
 import { UpdateUserDto } from "../user/dto/update-user.dto"
+import { FileInterceptor } from "@nestjs/platform-express"
 
 @Controller("auth")
 export class AuthController {
@@ -35,6 +50,24 @@ export class AuthController {
 	@Patch("profile")
 	async updateProfile(@CurrentUser("id") id: number, @Body() data: UpdateUserDto) {
 		return this.authService.updateProfile(id, data)
+	}
+
+	@Auth()
+	@Patch("profile/avatar")
+	@UseInterceptors(FileInterceptor("image"))
+	async updateProfileAvatar(
+		@CurrentUser("id") id: number,
+		@UploadedFile(
+			new ParseFilePipe({
+				validators: [
+					new MaxFileSizeValidator({ maxSize: 10e6 }),
+					new FileTypeValidator({ fileType: new RegExp("^image/(jpeg|png|jpg)$") }),
+				],
+			})
+		)
+		image: Express.Multer.File
+	) {
+		return this.authService.updateProfileAvatar(id, image)
 	}
 
 	@Auth()

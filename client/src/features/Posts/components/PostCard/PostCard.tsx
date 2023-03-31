@@ -1,15 +1,17 @@
 import { Box, Heading, HStack, Image, Link, Stack, Tag, TagLabel, TagLeftIcon, Text, Icon } from "@chakra-ui/react"
+import { Link as NavLink } from "react-router-dom"
 import { IPostCardProps } from "./PostCard.types"
 import { ExternalLinkIcon } from "@chakra-ui/icons"
 import { MdComment, MdFavorite } from "react-icons/md"
 import { VscCircleFilled } from "react-icons/vsc"
-import { formatDate } from "../../helpers/formatDate"
+import { formatDate } from "shared/utils/formatDate"
+import { ROUTES } from "shared/constants/routes"
 
 const PostCard = (props: IPostCardProps) => {
 	const { post, isHero } = props
 
 	return (
-		<Link _hover={{ textDecor: "none" }} role="group" as="article">
+		<Link _hover={{ textDecor: "none" }} role="group" as={NavLink} to={ROUTES.POSTS + `/${post.id}`}>
 			<Stack spacing="8">
 				<Box overflow="hidden">
 					<Image

@@ -3,6 +3,7 @@ import { Auth } from "features/Auth"
 import { Routes, Route } from "react-router-dom"
 import { ROUTES } from "shared/constants/routes"
 import { MainPage } from "./MainPage"
+import { PostPage } from "./PostPage"
 import { PostsPage } from "./PostsPage"
 import ProfilePage from "./ProfilePage/components/ProfilePage/ProfilePage"
 
@@ -16,6 +17,7 @@ const Routing = () => {
 				<Route path={ROUTES.REGISTER} element={<Auth type="register" />} />
 
 				<Route path={ROUTES.POSTS} element={<PostsPage />} />
+				<Route path={ROUTES.POSTS + "/:id"} element={<PostPage />} />
 
 				<Route path={ROUTES.PROFILE} element={<ProfilePage />} />
 			</Route>

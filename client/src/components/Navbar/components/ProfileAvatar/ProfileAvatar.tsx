@@ -14,8 +14,9 @@ import { TOAST_DEFAULT_OPTIONS } from "shared/constants/toast"
 import { authApi } from "features/Auth/api/auth"
 import ConfirmLogoutDialog from "../ConfirmLogoutDialog/ConfirmLogout"
 import { ROUTES } from "shared/constants/routes"
+import { ProfileAvatarProps } from "./ProfileAvatar.props"
 
-const ProfileAvatar = () => {
+const ProfileAvatar = ({ avatarUrl }: ProfileAvatarProps) => {
 	const { isOpen, onOpen, onClose } = useDisclosure()
 	const [logout, { isLoading }] = authApi.useLogoutMutation()
 	const toast = useToast(TOAST_DEFAULT_OPTIONS)
@@ -38,7 +39,7 @@ const ProfileAvatar = () => {
 	return (
 		<>
 			<Menu>
-				<MenuButton as={Avatar} size="sm" cursor="pointer" />
+				<MenuButton as={Avatar} size="sm" cursor="pointer" src={avatarUrl} />
 				<MenuList>
 					<MenuItem icon={<MdPerson />} fontWeight="semibold" as={NavLink} to={ROUTES.PROFILE}>
 						Profile

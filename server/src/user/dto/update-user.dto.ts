@@ -13,4 +13,8 @@ export class UpdateUserDto extends PartialType(CreateUserDto) {
 	@IsArray()
 	@IsEnum(Role, { each: true })
 	roles?: Role[]
+
+	@IsOptional()
+	@IsString()
+	avatarUrl?: string
 }

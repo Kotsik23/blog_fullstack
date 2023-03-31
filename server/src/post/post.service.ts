@@ -67,7 +67,7 @@ export class PostService {
 	}
 
 	async createPost(userId: number, dto: CreatePostDto, image: Express.Multer.File): Promise<Post> {
-		const loadedImage = await this.filesService.uploadFileToFirebase(image)
+		const loadedImage = await this.filesService.uploadFileToFirebase("post", image)
 
 		return this.prisma.post.create({
 			data: {
