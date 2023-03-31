@@ -35,7 +35,7 @@ const Header = () => {
 				</Flex>
 
 				<Flex gap="3" direction={{ base: "column", md: "row" }} w={{ base: "full", md: "max-content" }}>
-					<Button variant="solid" w="full" colorScheme="purple" leftIcon={<BsFillPersonPlusFill />}>
+					<Button variant="outline" w="full" colorScheme="purple" leftIcon={<BsFillPersonPlusFill />}>
 						Подписаться
 					</Button>
 					<Button variant="outline" w="full" leftIcon={<BsFillShareFill />}>

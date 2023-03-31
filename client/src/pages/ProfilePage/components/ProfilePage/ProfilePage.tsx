@@ -1,5 +1,5 @@
 import { Stack } from "@chakra-ui/react"
-import { ProfileChangeEmail, ProfileChangePassword, ProfileHeader } from "features/Profile"
+import { ProfileChangeAvatar, ProfileChangeEmail, ProfileChangePassword, ProfileHeader } from "features/Profile"
 
 const ProfilePage = () => {
 	return (
@@ -7,6 +7,7 @@ const ProfilePage = () => {
 			<ProfileHeader />
 			<ProfileChangePassword />
 			<ProfileChangeEmail />
+			<ProfileChangeAvatar />
 		</Stack>
 	)
 }
