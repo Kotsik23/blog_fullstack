@@ -3,5 +3,6 @@ export enum ROUTES {
 	REGISTER = "/auth/register",
 	LOGIN = "/auth/login",
 	PROFILE = "/profile",
-	POSTS = "/posts"
+	POSTS = "/posts",
+	CREATE = "/posts/create",
 }

@@ -9,7 +9,7 @@ import parse from "html-react-parser"
 const PostPage = () => {
 	const { id } = useParams()
 
-	const { data: post, isLoading, isError, error, isSuccess } = postsApi.useGetPostByIdQuery(id!)
+	const { data: post, isLoading, isError, error } = postsApi.useGetPostByIdQuery(id!)
 
 	if (isLoading) {
 		return (

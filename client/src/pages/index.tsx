@@ -2,10 +2,11 @@ import MainLayout from "components/Layout/MainLayout"
 import { Auth } from "features/Auth"
 import { Routes, Route } from "react-router-dom"
 import { ROUTES } from "shared/constants/routes"
+import CreatePostPage from "./CreatePostPage/components/CreatePostPage/CreatePostPage"
 import { MainPage } from "./MainPage"
 import { PostPage } from "./PostPage"
 import { PostsPage } from "./PostsPage"
-import ProfilePage from "./ProfilePage/components/ProfilePage/ProfilePage"
+import { ProfilePage } from "./ProfilePage"
 
 const Routing = () => {
 	return (
@@ -18,6 +19,7 @@ const Routing = () => {
 
 				<Route path={ROUTES.POSTS} element={<PostsPage />} />
 				<Route path={ROUTES.POSTS + "/:id"} element={<PostPage />} />
+				<Route path={ROUTES.CREATE} element={<CreatePostPage />} />
 
 				<Route path={ROUTES.PROFILE} element={<ProfilePage />} />
 			</Route>

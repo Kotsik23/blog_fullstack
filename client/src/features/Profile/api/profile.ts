@@ -23,5 +23,22 @@ export const profileApi = apiSlice.injectEndpoints({
 				}
 			},
 		}),
+
+		updateProfileAvatar: build.mutation<IUser, FormData>({
+			query: body => ({
+				url: API_ROUTES.PROFILE + "/avatar",
+				method: API_METHODS.PATCH,
+				body,
+			}),
+			async onQueryStarted(arg, api) {
+				try {
+					const { data } = await api.queryFulfilled
+					const state = (api.getState() as RootState).auth
+					api.dispatch(authActions.setCredentials({ ...state, user: data }))
+				} catch (error) {
+					console.log(error)
+				}
+			},
+		}),
 	}),
 })
