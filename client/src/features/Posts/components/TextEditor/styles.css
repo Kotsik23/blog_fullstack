@@ -1,0 +1,114 @@
+/* EDITOR */
+.editor {
+	border-radius: var(--chakra-radii-md);
+	margin-top: var(--chakra-space-2);
+	padding: 0 var(--chakra-space-4);
+   font-size: var(--chakra-fontSizes-xl);
+   border: 1px solid var(--chakra-colors-gray-200);
+   min-height: 150px;
+   line-height: 0.5;
+	cursor: text;
+}
+
+html[data-theme="dark"] .editor {
+	background-color: var(--chakra-colors-gray-900);
+   border: 1px solid var(--chakra-colors-gray-700);
+}
+
+/* TOOLBAR */
+.toolbar {
+	border: none;
+   border: 1px solid var(--chakra-colors-gray-200);
+	border-radius: var(--chakra-radii-md);
+}
+
+html[data-theme="dark"] .toolbar {
+	background-color: var(--chakra-colors-gray-900);
+   border: 1px solid var(--chakra-colors-gray-700);
+	color: black;
+}
+
+/* BUTTONS */
+.rdw-option-wrapper {
+	padding: var(--chakra-space-4);
+	border-radius: var(--chakra-radii-md);
+	background-color: var(--chakra-colors-gray-50);
+	transition: all 0.3s ease;
+	box-shadow: none;
+   border: none;
+}
+
+html[data-theme="dark"] .rdw-option-wrapper {
+	background-color: var(--chakra-colors-gray-700);
+}
+
+html[data-theme="dark"] .rdw-option-wrapper:hover {
+	background-color: var(--chakra-colors-gray-600);
+}
+
+html[data-theme="dark"] .rdw-option-wrapper img {
+	filter: invert(1);
+}
+
+.rdw-option-wrapper:hover {
+	background-color: var(--chakra-colors-gray-200);
+	box-shadow: none;
+}
+
+.rdw-option-active {
+	background-color: var(--chakra-colors-gray-300);
+	box-shadow: none;
+}
+
+html[data-theme="dark"] .rdw-option-active {
+	background-color: var(--chakra-colors-gray-500);
+}
+
+/* DROWPDOWNS */
+.rdw-dropdown-wrapper, 
+.rdw-dropdown-optionwrapper {
+   border-radius: var(--chakra-radii-md);
+	background-color: var(--chakra-colors-gray-50);
+	transition: all 0.3s ease;
+   box-shadow: none;
+   border: none;
+}
+
+.rdw-dropdownoption-default {
+   transition: all 0.3s ease;
+}
+
+html[data-theme="dark"] .rdw-dropdown-wrapper, 
+html[data-theme="dark"] .rdw-dropdown-optionwrapper {
+	background-color: var(--chakra-colors-gray-700);
+   color: white;
+}
+
+.rdw-dropdownoption-highlighted {
+	background-color: var(--chakra-colors-gray-200);
+}
+
+html[data-theme="dark"] .rdw-dropdownoption-highlighted {
+	background-color: var(--chakra-colors-gray-600);
+}
+
+html[data-theme="dark"] .rdw-dropdown-wrapper img, 
+html[data-theme="dark"] .rdw-dropdown-carettoopen, 
+html[data-theme="dark"] .rdw-dropdown-carettoclose {
+   filter: invert(1);
+}
+
+html[data-theme="dark"] .rdw-dropdownoption-active {
+   background-color: var(--chakra-colors-gray-600);
+}
+
+.rdw-dropdownoption-active  {
+   background-color: var(--chakra-colors-gray-300);
+}
+
+.rdw-dropdown-wrapper:hover, 
+.rdw-dropdown-optionwrapper:hover {
+	background-color: var(--chakra-colors-gray-50);
+   box-shadow: none;
+}
+

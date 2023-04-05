@@ -17,10 +17,13 @@
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
     "date-fns": "^2.29.3",
+    "draft-convert": "^2.1.13",
+    "draft-js": "^0.11.7",
     "framer-motion": "^10.5.0",
     "html-react-parser": "^3.0.15",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-draft-wysiwyg": "^1.15.0",
     "react-hook-form": "^7.43.7",
     "react-icons": "^4.8.0",
     "react-quill": "^2.0.0",
@@ -54,5 +57,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/draft-convert": "^2.1.4",
+    "@types/react-draft-wysiwyg": "^1.13.4"
   }
 }

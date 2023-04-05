@@ -6,6 +6,7 @@ import { MdComment, MdFavorite } from "react-icons/md"
 import { VscCircleFilled } from "react-icons/vsc"
 import { formatDate } from "shared/utils/formatDate"
 import { ROUTES } from "shared/constants/routes"
+import parse from "html-react-parser"
 
 const PostCard = (props: IPostCardProps) => {
 	const { post, isHero } = props
@@ -40,7 +41,7 @@ const PostCard = (props: IPostCardProps) => {
 						/>
 					</HStack>
 					<Text color="muted" fontWeight="semibold" noOfLines={2} fontSize="sm">
-						{post.content}
+						{parse(post.content)}
 					</Text>
 					<HStack spacing="3">
 						<Tag size={"md"} variant="subtle" colorScheme="cyan">
