@@ -1,9 +1,10 @@
-import { Button, Stack } from "@chakra-ui/react"
+import { Button, Stack, useToast } from "@chakra-ui/react"
 import { yupResolver } from "@hookform/resolvers/yup"
 import FileInput from "components/FileInput/FileInput"
 import SectionHeader from "components/SectionHeader/SectionHeader"
 import { profileApi } from "features/Profile/api/profile"
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form"
+import { TOAST_DEFAULT_OPTIONS } from "shared/constants/toast"
 import { changeAvatarSchema } from "./schema"
 import { ChangeAvatarFields } from "./types"
 
@@ -14,6 +15,8 @@ const ChangeAvatar = () => {
 			avatar: null,
 		},
 	})
+
+	const toast = useToast(TOAST_DEFAULT_OPTIONS)
 	const [update, { isLoading }] = profileApi.useUpdateProfileAvatarMutation()
 
 	const onSubmit: SubmitHandler<ChangeAvatarFields> = async data => {
@@ -21,8 +24,13 @@ const ChangeAvatar = () => {
 			const formData = new FormData()
 			formData.append("image", data.avatar!)
 
-			const response = await update(formData).unwrap()
-			console.log(response)
+			await update(formData).unwrap()
+			toast({
+				status: "success",
+				title: "Успешно",
+				description: "Вы успешно изменили свое изображение профиля",
+			})
+			methods.reset()
 		} catch (error) {
 			console.log(error)
 		}

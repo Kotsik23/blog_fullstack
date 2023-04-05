@@ -40,7 +40,7 @@ const PostCard = (props: IPostCardProps) => {
 							alignSelf="flex-start"
 						/>
 					</HStack>
-					<Text color="muted" fontWeight="semibold" noOfLines={2} fontSize="sm">
+					<Text color="muted" fontWeight="semibold" noOfLines={2} fontSize="sm" as="span">
 						{parse(post.content)}
 					</Text>
 					<HStack spacing="3">

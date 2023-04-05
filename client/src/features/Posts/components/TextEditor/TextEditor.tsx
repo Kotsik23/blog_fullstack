@@ -1,4 +1,3 @@
-import { useState } from "react"
 import { EditorState } from "draft-js"
 import { Editor } from "react-draft-wysiwyg"
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css"
@@ -9,10 +8,8 @@ import { TextEditorProps } from "./TextEditor.props"
 import { convertToHTML } from "draft-convert"
 import { toolbarOptions } from "./config"
 
-const TextEditor = ({ name }: TextEditorProps) => {
+const TextEditor = ({ name, editorState, setEditorState }: TextEditorProps) => {
 	const { control } = useFormContext()
-
-	const [editorState, setEditorState] = useState<EditorState>(EditorState.createEmpty())
 
 	return (
 		<Stack>
@@ -24,12 +21,12 @@ const TextEditor = ({ name }: TextEditorProps) => {
 				control={control}
 				render={({ field }) => (
 					<Editor
-						editorClassName="editor"
 						editorState={editorState}
 						onEditorStateChange={(editorState: EditorState) => {
 							setEditorState(editorState)
 							field.onChange(convertToHTML(editorState.getCurrentContent()))
 						}}
+						editorClassName="editor"
 						toolbar={toolbarOptions}
 						toolbarClassName="toolbar"
 						placeholder="Напишите что-нибудь..."

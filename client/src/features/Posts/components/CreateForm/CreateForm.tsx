@@ -7,38 +7,50 @@ import {
 	Input,
 	Stack,
 	useColorModeValue,
+	useToast,
 } from "@chakra-ui/react"
 import { yupResolver } from "@hookform/resolvers/yup"
 import FileInput from "components/FileInput/FileInput"
 import { EditorState } from "draft-js"
 import { postsApi } from "features/Posts/api/posts"
+import { useState } from "react"
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form"
+import { TOAST_DEFAULT_OPTIONS } from "shared/constants/toast"
 import TextEditor from "../TextEditor/TextEditor"
 import { schema } from "./schema"
 import { CreatePostFields } from "./types"
 
+const defaultValues: CreatePostFields = {
+	file: null,
+	content: EditorState.createEmpty(),
+	title: "",
+}
+
 const CreateForm = () => {
 	const methods = useForm<CreatePostFields>({
 		resolver: yupResolver(schema),
-		defaultValues: {
-			file: null,
-			content: EditorState.createEmpty(),
-			title: "",
-		},
+		defaultValues,
 	})
 
+	const [editorState, setEditorState] = useState<EditorState>(defaultValues.content)
+
 	const { handleSubmit, register, reset, formState } = methods
+	const toast = useToast(TOAST_DEFAULT_OPTIONS)
 	const [addPost, { isLoading }] = postsApi.useAddPostMutation()
 
 	const onSubmit: SubmitHandler<CreatePostFields> = async data => {
 		const formData = new FormData()
-
 		formData.append("title", data.title)
 		formData.append("content", data.content)
 		formData.append("image", data.file)
 		try {
 			const response = await addPost(formData).unwrap()
-			console.log(response)
+			toast({
+				status: "success",
+				title: "Успешно",
+				description: `Пост #${response.id} - ${response.title} был успешно создан`,
+			})
+			reset()
 		} catch (error) {
 			console.log(error)
 		}
@@ -62,7 +74,7 @@ const CreateForm = () => {
 					<FormErrorMessage>{formState.errors.title?.message}</FormErrorMessage>
 				</FormControl>
 
-				<TextEditor name="content" />
+				<TextEditor name="content" editorState={editorState} setEditorState={setEditorState} />
 
 				<FileInput name="file" />
 
@@ -70,7 +82,14 @@ const CreateForm = () => {
 					<Button variant="solid" colorScheme="purple" onClick={handleSubmit(onSubmit)} isLoading={isLoading}>
 						Сохранить
 					</Button>
-					<Button variant="outline" colorScheme="gray" onClick={() => reset()}>
+					<Button
+						variant="outline"
+						colorScheme="gray"
+						onClick={() => {
+							reset(defaultValues)
+							setEditorState(defaultValues.content)
+						}}
+					>
 						Очистить
 					</Button>
 				</Flex>
