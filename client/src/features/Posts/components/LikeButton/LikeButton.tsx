@@ -1,6 +1,7 @@
 import { Button, Flex, Icon, Text, useTheme, Stack } from "@chakra-ui/react"
 import { postsApi } from "features/Posts/api/posts"
 import { useState } from "react"
+import { useTranslation } from "react-i18next"
 import { BsHeart, BsHeartFill } from "react-icons/bs"
 import { useParams } from "react-router-dom"
 import { IUser } from "shared/types/user"
@@ -8,6 +9,7 @@ import { useAppSelector } from "shared/utils/redux"
 import { LikeButtonProps } from "./LikeButtonProps"
 
 const LikeButton = ({ likes }: LikeButtonProps) => {
+	const { t } = useTranslation()
 	const theme = useTheme()
 
 	const [postLikes, setPostLikes] = useState<IUser[]>(likes)
@@ -42,8 +44,10 @@ const LikeButton = ({ likes }: LikeButtonProps) => {
 			>
 				<Icon as={isLiked ? BsHeartFill : BsHeart} fontSize={{ base: "2xl", md: "4xl" }} />
 				<Stack>
-					<Text>{isLiked ? "Вам нравится" : "Оценить пост"}</Text>
-					<Text fontWeight="normal">Уже оценили: {postLikes.length}</Text>
+					<Text>{isLiked ? t("likeButton.like") : t("likeButton.notLike")}</Text>
+					<Text fontWeight="normal">
+						{t("likeButton.alreadyLiked")} {postLikes.length}
+					</Text>
 				</Stack>
 			</Button>
 		</Flex>

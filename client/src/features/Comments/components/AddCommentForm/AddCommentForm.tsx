@@ -12,11 +12,13 @@ import { yupResolver } from "@hookform/resolvers/yup"
 import { commentsApi } from "features/Comments/api/comments"
 import { CreateCommentPayload } from "features/Comments/types/comment.interface"
 import { SubmitHandler, useForm } from "react-hook-form"
+import { useTranslation } from "react-i18next"
 import { useParams } from "react-router-dom"
 import { TOAST_DEFAULT_OPTIONS } from "shared/constants/toast"
 import { createCommentSchema } from "./schema"
 
 const AddCommentForm = () => {
+	const { t } = useTranslation()
 	const {
 		register,
 		reset,
@@ -38,17 +40,15 @@ const AddCommentForm = () => {
 			}).unwrap()
 			toast({
 				status: "success",
-				title: "Успешно",
-				description: "Комментарий успешно добавлен",
+				title: t("toast.success"),
+				description: t("toast.addComment"),
 			})
 			reset()
 		} catch (error) {
 			console.log(error)
-
 			toast({
 				status: "error",
-				title: "Ошибка запроса",
-				description: "Ошибка на сервере",
+				title: t("toast.badRequest"),
 			})
 		}
 	}
@@ -64,7 +64,12 @@ const AddCommentForm = () => {
 			onSubmit={handleSubmit(onSubmit)}
 		>
 			<FormControl isInvalid={!!errors.body}>
-				<Input placeholder="Это очень интересно!" focusBorderColor={primaryColor} {...register("body")} size="lg" />
+				<Input
+					placeholder={t("comment.placeholder")!}
+					focusBorderColor={primaryColor}
+					{...register("body")}
+					size="lg"
+				/>
 				<FormErrorMessage>
 					<FormErrorIcon />
 					{errors.body?.message}
@@ -78,7 +83,7 @@ const AddCommentForm = () => {
 				size="lg"
 				type="submit"
 			>
-				Добавить
+				{t("comment.add")}
 			</Button>
 		</Flex>
 	)

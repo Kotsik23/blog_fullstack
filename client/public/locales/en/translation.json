@@ -1,0 +1,146 @@
+{
+   "hero": {
+      "badge": "Our Blog",
+      "heading": "Focus on yourself and tell others about it",
+      "subtitle": "Bring the idea to life.",
+      "start": "Start",
+      "more": "More"
+   },
+   "stats": {
+      "heading": "Why Blogging?",
+      "description": "A blog can become either a means of earning money, or a great way to popularize your activity or brand through promotion via the Internet.",
+      "subscribers": "Subscribers",
+      "emotions": "Positive emotions",
+      "visitors": "Visitors"
+   },
+   "testimonial": {
+      "first": {
+         "name": "Anna Petrova",
+         "role": "Journalist @ Editorial Office of Vogue magazine",
+         "body": "I became a fan of this blog from the very first lines. Such honest and heartfelt thoughts. I always feel inspired and positive after reading a new article. Thank you for sharing your world with us!"
+      },
+      "second": {
+         "name": "Dmitry Ivanov",
+         "role": "Manager @ Large IT Company",
+         "body": "There is nothing better than reading a note that seems to have been written especially for you. This blog always gives me a boost for reflection and helps me stay inspired. Thank you for helping us love reading blogs!"
+      }
+   },
+   "newsletter": {
+      "heading": "Subscribe to our newsletter",
+      "text": "We will write to you when any new feature becomes available or something grandiose happens.",
+      "policy": "Privacy policy",
+      "subscribe": "Subscribe",
+      "placeholder": "Enter your e-mail"
+   },
+   "footer": {
+      "text": "Blogging, Example Inc. All rights reserved."
+   },
+   "profileAvatar": {
+      "profile": "Profile",
+      "createPost": "Create post",
+      "logout": "Logout"
+   },
+   "toast": {
+      "success": "Success",
+      "badRequest": "Bad Request",
+      "logout": "You have successfully logged out of your account",
+      "login": "You have successfully logged in",
+      "register": "Account successfully created",
+      "addComment": "Comment added successfully",
+      "addPost": "The post was successfully created",
+      "updateAvatar": "You have successfully changed your profile picture",
+      "updateEmail": "You have successfully changed your e-mail",
+      "updatePassword": "You have successfully changed your password"
+   },
+   "confirmLogout": {
+      "heading": "Confirmation of logout",
+      "body": "Do you really want to log out of your account?",
+      "cancel": "Cancel",
+      "logout": "logout"
+   },
+   "navbar": {
+      "register": "Register"
+   },
+   "links": {
+      "main": "Main",
+      "news": "News",
+      "contacts": "Contacts"
+   },
+   "fileInput": {
+      "text": "Click to download"
+   },
+   "auth": {
+      "login": "Log In",
+      "register": "Creating an account",
+      "rememberMe": "Remember me",
+      "forgotPassword": "Forgot password?",
+      "noAccount": "Don't have an account yet?",
+      "haveAccount": "Already have an account?",
+      "loginAction": "Sign In",
+      "registerAction": "Register",
+      "password": "Password"
+   },
+   "createPostForm": {
+      "placeholder": "What do you want readers to learn from your post?",
+      "title": "Title",
+      "save": "Save",
+      "clear": "Clear"
+   },
+   "postError": {
+      "heading": "Oops. It seems an error has occurred...",
+      "text": "We couldn't upload posts for you",
+      "action": "Turn emptiness into your creativity"
+   },
+   "likeButton": {
+      "like": "You like",
+      "notLike": "Rate the post",
+      "alreadyLiked": "Already appreciated:"
+   },
+   "allPosts": {
+      "heading": "All posts",
+      "subtitle": "Freedom of speech begins here"
+   },
+   "comment": {
+      "placeholder": "It's very interesting!",
+      "add": "Add"
+   },
+   "logo": "Blogging.",
+   "textEditor": {
+      "heading": "Content",
+      "placeholder": "Write something..."
+   },
+   "updateAvatar": {
+      "heading": "Profile Picture",
+      "description": "It will be displayed in the profile header and when publishing",
+      "cancel": "Cancel",
+      "save": "Save Changes"
+   },
+   "updateEmail": {
+      "oldEmail": "Current e-mail address",
+      "newEmail": "New e-mail address",
+      "cancel": "Cancel",
+      "save": "Save Changes"
+   },
+   "updatePassword": {
+      "heading": "Password",
+      "description": "Please enter your old password to change it to a new one",
+      "currentPassword": "Current password",
+      "newPassword": "New password",
+      "confirmation": "Confirmation of new password",
+      "cancel": "Cancel",
+      "save": "Save Changes"
+   },
+   "profile": {
+      "heading": "Your profile",
+      "subscribe": "Subscribe",
+      "share": "Share"
+   },
+   "createPost": {
+      "heading": "Creating a new post"
+   },
+   "onePost": {
+      "published": "Published",
+      "content": "Content",
+      "comments": "Comments"
+   }
+}

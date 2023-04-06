@@ -8,27 +8,29 @@ import {
 	Button,
 } from "@chakra-ui/react"
 import { useRef } from "react"
+import { useTranslation } from "react-i18next"
 import { ConfirmLogoutProps } from "./ConfirmLogout.props"
 
 const ConfirmLogout = ({ isOpen, isLoading, onClose, onClickHandler }: ConfirmLogoutProps) => {
 	const cancelRef = useRef<HTMLButtonElement>(null)
+	const { t } = useTranslation()
 
 	return (
 		<AlertDialog isOpen={isOpen} onClose={onClose} leastDestructiveRef={cancelRef}>
 			<AlertDialogOverlay>
 				<AlertDialogContent>
 					<AlertDialogHeader fontSize="lg" fontWeight="semibold">
-						Подтверждение о выходе
+						{t("confirmLogout.heading")}
 					</AlertDialogHeader>
 
-					<AlertDialogBody>Вы действительно хотите выйти из аккаунта?</AlertDialogBody>
+					<AlertDialogBody>{t("confirmLogout.body")}</AlertDialogBody>
 
 					<AlertDialogFooter>
 						<Button ref={cancelRef} onClick={onClose}>
-							Отмена
+							{t("confirmLogout.cancel")}
 						</Button>
 						<Button colorScheme="red" onClick={onClickHandler} isLoading={isLoading} ml="3">
-							Выйти
+							{t("confirmLogout.logout")}
 						</Button>
 					</AlertDialogFooter>
 				</AlertDialogContent>

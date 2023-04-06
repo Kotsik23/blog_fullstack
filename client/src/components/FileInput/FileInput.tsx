@@ -5,6 +5,7 @@ import { SUPPORTED_FORMATS } from "shared/constants/files"
 import { FileInputProps } from "./FileInput.props"
 import { IoCloudUploadOutline } from "react-icons/io5"
 import { BsX } from "react-icons/bs"
+import { useTranslation } from "react-i18next"
 
 const FileInput = ({ name, accept = SUPPORTED_FORMATS }: FileInputProps) => {
 	const {
@@ -18,6 +19,7 @@ const FileInput = ({ name, accept = SUPPORTED_FORMATS }: FileInputProps) => {
 	const stringAccept = accept.join(", ")
 
 	const [previewUrl, setPreviewUrl] = useState<string | null>(null)
+	const { t } = useTranslation()
 
 	const onFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		const files = event.target.files
@@ -68,7 +70,7 @@ const FileInput = ({ name, accept = SUPPORTED_FORMATS }: FileInputProps) => {
 				) : (
 					<Stack spacing="3" align="center">
 						<Icon as={errors.file ? BsX : IoCloudUploadOutline} boxSize="10" />
-						<Text fontSize="lg">{errors.file ? (errors.file.message as string) : "Нажмите для загрузки"}</Text>
+						<Text fontSize="lg">{errors.file ? (errors.file.message as string) : t("fileInput.text")}</Text>
 						<Text as="span" fontWeight="normal" textTransform="uppercase">
 							{accept.map(item => item.replace("image/", "")).join(", ")}
 						</Text>

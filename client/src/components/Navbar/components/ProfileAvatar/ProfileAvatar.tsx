@@ -16,8 +16,10 @@ import { authApi } from "features/Auth/api/auth"
 import ConfirmLogoutDialog from "../ConfirmLogoutDialog/ConfirmLogout"
 import { ROUTES } from "shared/constants/routes"
 import { ProfileAvatarProps } from "./ProfileAvatar.props"
+import { useTranslation } from "react-i18next"
 
 const ProfileAvatar = ({ avatarUrl }: ProfileAvatarProps) => {
+	const { t } = useTranslation()
 	const { isOpen, onOpen, onClose } = useDisclosure()
 	const [logout, { isLoading }] = authApi.useLogoutMutation()
 	const toast = useToast(TOAST_DEFAULT_OPTIONS)
@@ -28,8 +30,8 @@ const ProfileAvatar = ({ avatarUrl }: ProfileAvatarProps) => {
 			await logout().unwrap()
 			toast({
 				status: "info",
-				title: "Успешно",
-				description: "Вы успешно вышли из своего аккаунта",
+				title: t("toast.success"),
+				description: t("toast.logout"),
 			})
 			navigate(ROUTES.MAIN)
 		} catch (error) {
@@ -43,10 +45,10 @@ const ProfileAvatar = ({ avatarUrl }: ProfileAvatarProps) => {
 				<MenuButton as={Avatar} size="sm" cursor="pointer" src={avatarUrl} />
 				<MenuList>
 					<MenuItem icon={<MdPerson />} fontWeight="semibold" as={NavLink} to={ROUTES.PROFILE}>
-						Профиль
+						{t("profileAvatar.profile")}
 					</MenuItem>
 					<MenuItem icon={<AiOutlinePlus />} fontWeight="semibold" as={NavLink} to={ROUTES.CREATE}>
-						Создать пост
+						{t("profileAvatar.createPost")}
 					</MenuItem>
 					<MenuItem
 						icon={<MdLogout />}
@@ -54,7 +56,7 @@ const ProfileAvatar = ({ avatarUrl }: ProfileAvatarProps) => {
 						color={useColorModeValue("red.500", "red.300")}
 						onClick={onOpen}
 					>
-						Выйти
+						{t("profileAvatar.logout")}
 					</MenuItem>
 				</MenuList>
 			</Menu>

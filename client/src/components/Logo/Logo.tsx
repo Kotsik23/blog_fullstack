@@ -1,8 +1,11 @@
 import { Heading } from "@chakra-ui/react"
+import { useTranslation } from "react-i18next"
 import { Link } from "react-router-dom"
 import { ROUTES } from "shared/constants/routes"
 
 const Logo = () => {
+	const { t } = useTranslation()
+
 	return (
 		<Heading
 			size="md"
@@ -13,7 +16,7 @@ const Logo = () => {
 			fontSize={"4xl"}
 			textAlign="center"
 		>
-			<Link to={ROUTES.MAIN}>Блоггинг.</Link>
+			<Link to={ROUTES.MAIN}>{t("logo")}</Link>
 		</Heading>
 	)
 }

@@ -22,8 +22,10 @@ import { IAuthFormProps } from "./Auth.props"
 import { TOAST_DEFAULT_OPTIONS } from "shared/constants/toast"
 import { ROUTES } from "shared/constants/routes"
 import { authScheme } from "./auth.scheme"
+import { useTranslation } from "react-i18next"
 
 const Auth = ({ type }: IAuthFormProps) => {
+	const { t } = useTranslation()
 	const {
 		register: registerField,
 		reset,
@@ -53,8 +55,8 @@ const Auth = ({ type }: IAuthFormProps) => {
 		try {
 			isLogin ? await login(data).unwrap() : await register(data).unwrap()
 			toast({
-				title: "Успешно",
-				description: isLogin ? "Вы успешно зашли в систему" : "Аккаунт успешно создан",
+				title: t("toast.success"),
+				description: isLogin ? t("toast.login") : t("toast.register"),
 				status: "success",
 			})
 			reset()
@@ -75,16 +77,16 @@ const Auth = ({ type }: IAuthFormProps) => {
 			<Container maxW="lg" py={{ base: "12", md: "24" }} px={{ base: "0", sm: "8" }}>
 				<Stack spacing="8">
 					<Stack spacing={{ base: "2", md: "3" }} textAlign="center">
-						<Heading size="lg">{isLogin ? "Вход в систему" : "Создание аккаунта"}</Heading>
+						<Heading size="lg">{isLogin ? t("auth.login") : t("auth.register")}</Heading>
 						<HStack spacing="1" justify="center">
-							<Text color="muted">{isLogin ? "Еще нет аккаунта?" : "Уже есть аккаунт?"}</Text>
+							<Text color="muted">{isLogin ? t("auth.noAccount") : t("auth.haveAccount")}</Text>
 							<Button
 								variant="link"
 								colorScheme="purple"
 								as={NavLink}
 								to={isLogin ? ROUTES.REGISTER : ROUTES.LOGIN}
 							>
-								{isLogin ? "Создание аккаунта" : "Вход в систему"}
+								{isLogin ? t("auth.login") : t("auth.register")}
 							</Button>
 						</HStack>
 					</Stack>
@@ -110,7 +112,7 @@ const Auth = ({ type }: IAuthFormProps) => {
 								<CustomInput
 									control={control}
 									name="password"
-									title="Пароль"
+									title={t("auth.password")}
 									type="password"
 									placeholder="••••••"
 									focusBorderColor={primary}
@@ -119,11 +121,11 @@ const Auth = ({ type }: IAuthFormProps) => {
 							<HStack justify={isLogin ? "space-between" : "flex-end"}>
 								{isLogin && (
 									<Checkbox defaultChecked={false} colorScheme="purple" {...registerField("isRemember")}>
-										Запомнить меня
+										{t("auth.rememberMe")}
 									</Checkbox>
 								)}
 								<Button variant="link" colorScheme="purple" size="sm">
-									Забыли пароль?
+									{t("auth.forgotPassword")}
 								</Button>
 							</HStack>
 							<Button
@@ -132,7 +134,7 @@ const Auth = ({ type }: IAuthFormProps) => {
 								isLoading={isLoginLoading || isRegisterLoading}
 								type="submit"
 							>
-								{isLogin ? "Войти" : "Зарегистрироваться"}
+								{isLogin ? t("auth.loginAction") : t("auth.registerAction")}
 							</Button>
 						</Stack>
 					</Box>

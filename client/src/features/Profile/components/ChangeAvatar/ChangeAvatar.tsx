@@ -4,11 +4,13 @@ import FileInput from "components/FileInput/FileInput"
 import SectionHeader from "components/SectionHeader/SectionHeader"
 import { profileApi } from "features/Profile/api/profile"
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form"
+import { useTranslation } from "react-i18next"
 import { TOAST_DEFAULT_OPTIONS } from "shared/constants/toast"
 import { changeAvatarSchema } from "./schema"
 import { ChangeAvatarFields } from "./types"
 
 const ChangeAvatar = () => {
+	const { t } = useTranslation()
 	const methods = useForm<ChangeAvatarFields>({
 		resolver: yupResolver(changeAvatarSchema),
 		defaultValues: {
@@ -27,8 +29,8 @@ const ChangeAvatar = () => {
 			await update(formData).unwrap()
 			toast({
 				status: "success",
-				title: "Успешно",
-				description: "Вы успешно изменили свое изображение профиля",
+				title: t("toast.success"),
+				description: t("toast.updateAvatar"),
 			})
 			methods.reset()
 		} catch (error) {
@@ -38,9 +40,7 @@ const ChangeAvatar = () => {
 
 	return (
 		<>
-			<SectionHeader description="Будет отображаться в шапке профиля и при публикациях">
-				Изображение профиля
-			</SectionHeader>
+			<SectionHeader description={t("updateAvatar.description")!}>{t("updateAvatar.heading")}</SectionHeader>
 
 			<FormProvider {...methods}>
 				<Stack spacing="6" as="form">
@@ -48,10 +48,10 @@ const ChangeAvatar = () => {
 
 					<Stack direction={{ base: "column", md: "row" }} spacing="3" alignSelf={{ md: "flex-end" }}>
 						<Button variant="outline" onClick={() => methods.reset()} isDisabled={!methods.getValues("avatar")}>
-							Отмена
+							{t("updateAvatar.cancel")}
 						</Button>
 						<Button colorScheme="purple" onClick={methods.handleSubmit(onSubmit)} isLoading={isLoading}>
-							Сохранить изменения
+							{t("updateAvatar.save")}
 						</Button>
 					</Stack>
 				</Stack>

@@ -1,16 +1,17 @@
+import i18next from "../../../../app/i18n"
 import { IStat } from "./StatItem/StatItem.props"
 
 export const stats: IStat[] = [
 	{
 		value: "12K+",
-		label: "Подписчиков",
+		label: i18next.t("stats.subscribers"),
 	},
 	{
 		value: "88%",
-		label: "Положительных эмоций",
+		label: i18next.t("stats.emotions"),
 	},
 	{
 		value: "15K+",
-		label: "Посетителей",
+		label: i18next.t("stats.visitors"),
 	},
 ]

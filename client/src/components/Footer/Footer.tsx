@@ -1,8 +1,11 @@
 import { Container, Stack, ButtonGroup, IconButton, Text } from "@chakra-ui/react"
+import { useTranslation } from "react-i18next"
 import { FaGithub, FaLinkedin, FaTelegramPlane } from "react-icons/fa"
 import Logo from "../Logo/Logo"
 
 const Footer = () => {
+	const { t } = useTranslation()
+
 	return (
 		<Container as="footer" maxW="container.xl" py={{ base: "12", md: "16" }}>
 			<Stack spacing={{ base: "4", md: "5" }}>
@@ -33,7 +36,7 @@ const Footer = () => {
 					</ButtonGroup>
 				</Stack>
 				<Text fontSize="sm" color="subtle">
-					&copy; {new Date().getFullYear()} Блоггинг, Example Inc. Все права защищены.
+					&copy; {new Date().getFullYear()} {t("footer.text")}
 				</Text>
 			</Stack>
 		</Container>

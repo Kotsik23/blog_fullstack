@@ -15,6 +15,7 @@ import { EditorState } from "draft-js"
 import { postsApi } from "features/Posts/api/posts"
 import { useState } from "react"
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form"
+import { useTranslation } from "react-i18next"
 import { TOAST_DEFAULT_OPTIONS } from "shared/constants/toast"
 import TextEditor from "../TextEditor/TextEditor"
 import { schema } from "./schema"
@@ -27,6 +28,7 @@ const defaultValues: CreatePostFields = {
 }
 
 const CreateForm = () => {
+	const { t } = useTranslation()
 	const methods = useForm<CreatePostFields>({
 		resolver: yupResolver(schema),
 		defaultValues,
@@ -44,11 +46,11 @@ const CreateForm = () => {
 		formData.append("content", data.content)
 		formData.append("image", data.file)
 		try {
-			const response = await addPost(formData).unwrap()
+			await addPost(formData).unwrap()
 			toast({
 				status: "success",
-				title: "Успешно",
-				description: `Пост #${response.id} - ${response.title} был успешно создан`,
+				title: t("toast.success"),
+				description: t("toast.addPost"),
 			})
 			reset()
 		} catch (error) {
@@ -62,11 +64,11 @@ const CreateForm = () => {
 			<Stack as="form" spacing="6">
 				<FormControl isInvalid={!!formState.errors.title}>
 					<FormLabel htmlFor="title" fontSize="xl">
-						Заголовок
+						{t("createPostForm.title")}
 					</FormLabel>
 					<Input
 						id="title"
-						placeholder="Как побороть свои..."
+						placeholder={t("createPostForm.placeholder")!}
 						focusBorderColor={primaryColor}
 						size="lg"
 						{...register("title")}
@@ -80,7 +82,7 @@ const CreateForm = () => {
 
 				<Flex gap={{ base: 2, md: 4 }} alignSelf={{ md: "flex-end" }} direction={{ base: "column", md: "row" }}>
 					<Button variant="solid" colorScheme="purple" onClick={handleSubmit(onSubmit)} isLoading={isLoading}>
-						Сохранить
+						{t("createPostForm.save")}
 					</Button>
 					<Button
 						variant="outline"
@@ -90,7 +92,7 @@ const CreateForm = () => {
 							setEditorState(defaultValues.content)
 						}}
 					>
-						Очистить
+						{t("createPostForm.clear")}
 					</Button>
 				</Flex>
 			</Stack>

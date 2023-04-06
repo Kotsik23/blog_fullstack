@@ -7,14 +7,16 @@ import { Controller, useFormContext } from "react-hook-form"
 import { TextEditorProps } from "./TextEditor.props"
 import { convertToHTML } from "draft-convert"
 import { toolbarOptions } from "./config"
+import { useTranslation } from "react-i18next"
 
 const TextEditor = ({ name, editorState, setEditorState }: TextEditorProps) => {
+	const { t } = useTranslation()
 	const { control } = useFormContext()
 
 	return (
 		<Stack>
 			<Text fontSize="xl" fontWeight="medium">
-				Содержание
+				{t("textEditor.heading")}
 			</Text>
 			<Controller
 				name={name}
@@ -29,7 +31,7 @@ const TextEditor = ({ name, editorState, setEditorState }: TextEditorProps) => {
 						editorClassName="editor"
 						toolbar={toolbarOptions}
 						toolbarClassName="toolbar"
-						placeholder="Напишите что-нибудь..."
+						placeholder={t("textEditor.placeholder")!}
 						stripPastedStyles
 					/>
 				)}

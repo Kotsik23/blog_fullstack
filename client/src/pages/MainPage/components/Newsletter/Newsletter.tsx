@@ -11,9 +11,12 @@ import {
 	Button,
 	useColorModeValue,
 } from "@chakra-ui/react"
+import { useTranslation } from "react-i18next"
 
 const Newsletter = () => {
 	const primary = useColorModeValue("purple.500", "purple.200")
+
+	const { t } = useTranslation()
 
 	return (
 		<Container maxW="container.xl" py={{ base: "16", md: "24" }} as="section">
@@ -24,18 +27,23 @@ const Newsletter = () => {
 			>
 				<Stack spacing={{ base: "8", md: "10" }} width="full">
 					<Stack spacing={{ base: "4", md: "6" }}>
-						<Heading size={{ base: "sm", md: "lg" }}>Подпишитесь на нашу рассылку</Heading>
+						<Heading size={{ base: "sm", md: "lg" }}>{t("newsletter.heading")}</Heading>
 						<Text fontSize={{ base: "lg", md: "xl" }} color="muted">
-							Мы напишем вам, когда станет доступна какая-либо новая функция или свершится что-то грандиозное
+							{t("newsletter.text")}
 						</Text>
 					</Stack>
 					<Stack direction={{ base: "column", sm: "row" }} width="full" maxW={{ md: "lg" }} spacing="4">
 						<FormControl flex="1">
-							<Input type="email" size="lg" placeholder="Введите ваш e-mail" focusBorderColor={primary} />
-							<FormHelperText color="muted">Политика конфиденциальности</FormHelperText>
+							<Input
+								type="email"
+								size="lg"
+								placeholder={t("newsletter.placeholder")!}
+								focusBorderColor={primary}
+							/>
+							<FormHelperText color="muted">{t("newsletter.policy")}</FormHelperText>
 						</FormControl>
 						<Button variant="solid" colorScheme="purple" size="lg">
-							Подписаться
+							{t("newsletter.subscribe")}
 						</Button>
 					</Stack>
 				</Stack>

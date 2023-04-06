@@ -9,22 +9,17 @@ interface IMenuItem {
 export const MenuItems: IMenuItem[] = [
 	{
 		id: 1,
-		text: "Главная",
+		text: "links.main",
 		link: ROUTES.MAIN,
 	},
 	{
 		id: 2,
-		text: "Новости",
+		text: "links.news",
 		link: ROUTES.POSTS,
 	},
 	{
 		id: 3,
-		text: "Контакты",
-		link: "/",
-	},
-	{
-		id: 4,
-		text: "Галерея",
-		link: "/",
+		text: "links.contacts",
+		link: "/#contacts",
 	},
 ]

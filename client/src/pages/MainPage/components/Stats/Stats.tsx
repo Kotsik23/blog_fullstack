@@ -1,17 +1,17 @@
 import { useBreakpointValue, Container, Stack, Heading, StackDivider, Text } from "@chakra-ui/react"
+import { useTranslation } from "react-i18next"
 import StatItem from "./StatItem/StatItem"
-import { stats } from "./Stats.constants"
 
 const Stats = () => {
+	const { t } = useTranslation()
 	const isMobile = useBreakpointValue({ base: true, md: false })
 	return (
 		<Container maxW="container.xl" py={{ base: "16", md: "24" }} as="section">
 			<Stack spacing={{ base: "12", md: "16" }} textAlign="center" align="center">
 				<Stack spacing={{ base: "4", md: "5" }}>
-					<Heading size="lg">Почему Блоггинг?</Heading>
+					<Heading size="lg">{t("stats.heading")}</Heading>
 					<Text fontSize={{ base: "lg", md: "xl" }} color="muted" maxW="3xl">
-						Блог может стать либо средством заработка, либо отличным способом популяризации своей деятельности или
-						бренда с помощью продвижения через интернет.
+						{t("stats.description")}
 					</Text>
 				</Stack>
 				<Stack
@@ -21,9 +21,9 @@ const Stats = () => {
 					spacing={{ base: "8", md: "4" }}
 					{...(!isMobile ? { divider: <StackDivider /> } : {})}
 				>
-					{stats.map((stat, id) => (
-						<StatItem key={id} flex="1" {...stat} />
-					))}
+					<StatItem flex="1" label={t("stats.subscribers")} value="12K+" />
+					<StatItem flex="1" label={t("stats.emotions")} value="88%" />
+					<StatItem flex="1" label={t("stats.visitors")} value="15K+" />
 				</Stack>
 			</Stack>
 		</Container>

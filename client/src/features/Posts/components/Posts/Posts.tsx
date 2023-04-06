@@ -1,10 +1,12 @@
 import { ArrowDownIcon } from "@chakra-ui/icons"
 import { Box, Center, Container, Heading, Highlight, HStack, SimpleGrid, Spinner, Stack, Text } from "@chakra-ui/react"
 import { postsApi } from "features/Posts/api/posts"
+import { useTranslation } from "react-i18next"
 import Error from "../Error/Error"
 import PostCard from "../PostCard/PostCard"
 
 const Posts = () => {
+	const { t } = useTranslation()
 	const { data: posts, isLoading, isError, error } = postsApi.useGetAllPostsQuery()
 
 	if (isLoading) {
@@ -25,14 +27,14 @@ const Posts = () => {
 			<Box bg="bg-surface" role="group">
 				<Container w="full" pt={{ base: "16", md: "24" }} pb={{ base: "32", md: "48" }}>
 					<Stack spacing={{ base: "4", md: "6" }} textAlign="center" alignItems="center">
-						<Heading size="xl">Все посты</Heading>
+						<Heading size="xl">{t("allPosts.heading")}</Heading>
 						<HStack spacing="2">
 							<Text fontSize="lg">
 								<Highlight
-									query="слова"
+									query={["слова", "speech"]}
 									styles={{ px: "2", py: "1", rounded: "full", bg: "primary", color: "on-primary" }}
 								>
-									Свобода слова начинается здесь
+									{t("allPosts.subtitle")!}
 								</Highlight>
 							</Text>
 							<ArrowDownIcon

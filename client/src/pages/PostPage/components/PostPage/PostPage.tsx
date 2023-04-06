@@ -7,8 +7,10 @@ import PostAuthor from "../PostAuthor/PostAuthor"
 import parse from "html-react-parser"
 import { AddCommentForm, CommentsList } from "features/Comments"
 import { LikeButton } from "features/Posts"
+import { useTranslation } from "react-i18next"
 
 const PostPage = () => {
+	const { t } = useTranslation()
 	const { id } = useParams()
 
 	const { data: post, isLoading, isError, error } = postsApi.useGetPostByIdQuery(id!)
@@ -32,7 +34,7 @@ const PostPage = () => {
 				<Container maxW="container.md" w="full">
 					<Stack spacing={{ base: "4", md: "6" }} textAlign="center" alignItems="center">
 						<Text as="span" fontWeight="semibold" color="primary">
-							Опубликовано {formatDate(post?.createdAt!)}
+							{t("onePost.published")} {formatDate(post?.createdAt!)}
 						</Text>
 						<Heading size={{ base: "lg", md: "xl" }}>{post?.title}</Heading>
 						<PostAuthor author={post?.author!} />
@@ -52,7 +54,7 @@ const PostPage = () => {
 
 				<Container maxW="container.xl">
 					<Stack>
-						<SectionHeader>Содержание</SectionHeader>
+						<SectionHeader>{t("onePost.content")}</SectionHeader>
 						<Box as="article" textAlign="justify">
 							{parse(post?.content!)}
 						</Box>
@@ -61,7 +63,7 @@ const PostPage = () => {
 
 				<LikeButton likes={post?.likes!} />
 
-				<SectionHeader>Комментарии</SectionHeader>
+				<SectionHeader>{t("onePost.comments")}</SectionHeader>
 
 				<Stack spacing="8">
 					<AddCommentForm />
