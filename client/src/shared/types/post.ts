@@ -1,3 +1,5 @@
+import { IUser } from "./user"
+
 export interface IPost {
 	id: number
 	createdAt: Date
@@ -14,22 +16,12 @@ export interface IPostAll extends IPost {
 }
 
 export interface IPostOne extends IPost {
-	author: Author
-	comments: Comment[]
+	author: IUser
 	likes: Like[]
 }
 
 interface Like extends Author {
 	roles: string[]
-}
-
-interface Comment {
-	id: number
-	createdAt: Date
-	body: string
-	userId: number
-	postId: number
-	user: Author
 }
 
 interface Statistics {

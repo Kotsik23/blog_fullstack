@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom"
 import { formatDate } from "shared/utils/formatDate"
 import PostAuthor from "../PostAuthor/PostAuthor"
 import parse from "html-react-parser"
+import { AddCommentForm, CommentsList } from "features/Comments"
 
 const PostPage = () => {
 	const { id } = useParams()
@@ -56,6 +57,13 @@ const PostPage = () => {
 						</Box>
 					</Stack>
 				</Container>
+
+				<SectionHeader>Комментарии</SectionHeader>
+
+				<Stack spacing="8">
+					<AddCommentForm />
+					<CommentsList />
+				</Stack>
 			</Stack>
 		</Box>
 	)

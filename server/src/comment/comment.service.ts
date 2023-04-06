@@ -13,6 +13,12 @@ export class CommentService {
 			where: {
 				postId,
 			},
+			include: {
+				user: true,
+			},
+			orderBy: {
+				createdAt: "desc",
+			},
 		})
 	}
 

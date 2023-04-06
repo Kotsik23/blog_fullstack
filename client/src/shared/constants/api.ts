@@ -6,6 +6,7 @@ export enum API_ROUTES {
 	REFRESH = "/auth/refresh",
 
 	POSTS = "/posts",
+	COMMENTS = "/comments",
 }
 
 export enum API_METHODS {

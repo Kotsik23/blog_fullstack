@@ -40,11 +40,6 @@ export class PostService {
 			where: { id },
 			include: {
 				author: true,
-				comments: {
-					include: {
-						user: true,
-					},
-				},
 				likes: {
 					select: {
 						id: true,
