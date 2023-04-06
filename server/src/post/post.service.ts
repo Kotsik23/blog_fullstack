@@ -109,9 +109,7 @@ export class PostService {
 				},
 			},
 			include: {
-				_count: {
-					select: { likes: true },
-				},
+				likes: true,
 			},
 		})
 	}

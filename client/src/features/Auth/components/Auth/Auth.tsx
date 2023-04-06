@@ -89,11 +89,13 @@ const Auth = ({ type }: IAuthFormProps) => {
 						</HStack>
 					</Stack>
 					<Box
+						as="form"
 						py={{ base: "0", sm: "8" }}
 						px={{ base: "4", sm: "10" }}
 						bg={{ base: "transparent", sm: "bg-surface" }}
 						boxShadow={{ base: "none", sm: "lg-custom" }}
 						borderRadius={{ base: "none", sm: "xl" }}
+						onSubmit={handleSubmit(onSubmitHandler)}
 					>
 						<Stack spacing="6">
 							<Stack spacing="5">
@@ -128,7 +130,7 @@ const Auth = ({ type }: IAuthFormProps) => {
 								variant="solid"
 								colorScheme="purple"
 								isLoading={isLoginLoading || isRegisterLoading}
-								onClick={handleSubmit(onSubmitHandler)}
+								type="submit"
 							>
 								{isLogin ? "Войти" : "Зарегистрироваться"}
 							</Button>

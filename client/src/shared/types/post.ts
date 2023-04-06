@@ -17,11 +17,7 @@ export interface IPostAll extends IPost {
 
 export interface IPostOne extends IPost {
 	author: IUser
-	likes: Like[]
-}
-
-interface Like extends Author {
-	roles: string[]
+	likes: IUser[]
 }
 
 interface Statistics {

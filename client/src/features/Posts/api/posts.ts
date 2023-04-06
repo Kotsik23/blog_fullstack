@@ -46,5 +46,13 @@ export const postsApi = apiSlice.injectEndpoints({
 			}),
 			invalidatesTags: (result, error, arg) => [{ type: "Post", id: arg }],
 		}),
+
+		toggleLike: build.mutation<Omit<IPostOne, "author">, number>({
+			query: id => ({
+				url: `${API_ROUTES.POSTS}/like/${id}`,
+				method: API_METHODS.PATCH,
+			}),
+			invalidatesTags: (result, error, arg) => [{ type: "Post", id: arg }],
+		}),
 	}),
 })
