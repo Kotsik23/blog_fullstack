@@ -8,6 +8,14 @@ import { PostService } from "src/post/post.service"
 export class CommentService {
 	constructor(private readonly prisma: PrismaService, private readonly postService: PostService) {}
 
+	async getCommentsByPost(postId: number): Promise<Comment[]> {
+		return this.prisma.comment.findMany({
+			where: {
+				postId,
+			},
+		})
+	}
+
 	async createComment(userId: number, postId: number, dto: CreateCommentDto): Promise<Comment> {
 		await this.postService.getPostById(postId)
 		return this.prisma.comment.create({

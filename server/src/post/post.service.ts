@@ -39,20 +39,10 @@ export class PostService {
 		return this.prisma.post.findUniqueOrThrow({
 			where: { id },
 			include: {
-				author: {
-					select: {
-						id: true,
-						email: true,
-					},
-				},
+				author: true,
 				comments: {
 					include: {
-						user: {
-							select: {
-								id: true,
-								email: true,
-							},
-						},
+						user: true,
 					},
 				},
 				likes: {

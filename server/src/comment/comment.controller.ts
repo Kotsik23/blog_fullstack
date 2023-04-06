@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Param, ParseIntPipe, Patch } from "@nestjs/common"
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch } from "@nestjs/common"
 import { CommentService } from "./comment.service"
 import { Auth } from "src/auth/guards/auth.guard"
 import { CurrentUser } from "src/auth/decorators/current-user.decorator"
@@ -9,6 +9,11 @@ import { Role } from "@prisma/client"
 @Controller("comments")
 export class CommentController {
 	constructor(private readonly commentService: CommentService) {}
+
+	@Get(":id")
+	async getCommentsByPost(@Param("id", ParseIntPipe) postId: number) {
+		return this.commentService.getCommentsByPost(postId)
+	}
 
 	@Auth()
 	@Patch(":id")
