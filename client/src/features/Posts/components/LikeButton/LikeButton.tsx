@@ -33,7 +33,7 @@ const LikeButton = ({ likes }: LikeButtonProps) => {
 			<Button
 				variant={isLiked ? "solid" : "outline"}
 				size="lg"
-				p={{ base: "6", md: "12" }}
+				p={{ base: "8", md: "12" }}
 				w="full"
 				maxW="container.md"
 				colorScheme="pink"
@@ -44,8 +44,10 @@ const LikeButton = ({ likes }: LikeButtonProps) => {
 			>
 				<Icon as={isLiked ? BsHeartFill : BsHeart} fontSize={{ base: "2xl", md: "4xl" }} />
 				<Stack>
-					<Text>{isLiked ? t("likeButton.like") : t("likeButton.notLike")}</Text>
-					<Text fontWeight="normal">
+					<Text fontSize={{ base: "md", md: "lg" }}>
+						{isLiked ? t("likeButton.like") : t("likeButton.notLike")}
+					</Text>
+					<Text fontSize={{ base: "sm", md: "md" }} fontWeight="normal">
 						{t("likeButton.alreadyLiked")} {postLikes.length}
 					</Text>
 				</Stack>

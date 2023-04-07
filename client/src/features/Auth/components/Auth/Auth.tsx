@@ -5,7 +5,6 @@ import {
 	Box,
 	Button,
 	Center,
-	Checkbox,
 	Container,
 	Heading,
 	HStack,
@@ -26,18 +25,12 @@ import { useTranslation } from "react-i18next"
 
 const Auth = ({ type }: IAuthFormProps) => {
 	const { t } = useTranslation()
-	const {
-		register: registerField,
-		reset,
-		handleSubmit,
-		control,
-	} = useForm<IAuthFields>({
+	const { reset, handleSubmit, control } = useForm<IAuthFields>({
 		mode: "onTouched",
 		resolver: yupResolver(authScheme),
 		defaultValues: {
 			email: "",
 			password: "",
-			isRemember: false,
 		},
 	})
 
@@ -118,16 +111,9 @@ const Auth = ({ type }: IAuthFormProps) => {
 									focusBorderColor={primary}
 								/>
 							</Stack>
-							<HStack justify={isLogin ? "space-between" : "flex-end"}>
-								{isLogin && (
-									<Checkbox defaultChecked={false} colorScheme="purple" {...registerField("isRemember")}>
-										{t("auth.rememberMe")}
-									</Checkbox>
-								)}
-								<Button variant="link" colorScheme="purple" size="sm">
-									{t("auth.forgotPassword")}
-								</Button>
-							</HStack>
+							<Button variant="link" colorScheme="purple" size="sm" alignSelf="flex-end">
+								{t("auth.forgotPassword")}
+							</Button>
 							<Button
 								variant="solid"
 								colorScheme="purple"

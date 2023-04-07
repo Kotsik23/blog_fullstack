@@ -1,3 +1,5 @@
-export { default as Posts } from "./components/Posts/Posts"
+export { default as OnePostInfo } from "./components/OnePostInfo/OnePostInfo"
+export { default as AllPostsGrid } from "./components/PostsGrid/PostsGrid"
+export { default as AllPostsHeading } from "./components/Heading/Heading"
 export { default as CreatePostForm } from "./components/CreateForm/CreateForm"
 export { default as LikeButton } from "./components/LikeButton/LikeButton"

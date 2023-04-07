@@ -1,4 +1,4 @@
-import { Center, ChakraProvider, Spinner } from "@chakra-ui/react"
+import { ChakraProvider } from "@chakra-ui/react"
 import Routing from "pages"
 import { Provider } from "react-redux"
 import { BrowserRouter } from "react-router-dom"

@@ -1,4 +1,4 @@
-import { Box, Button, Container, Flex, Link, Text, useColorModeValue } from "@chakra-ui/react"
+import { Box, Button, Container, Flex, Link, useColorModeValue } from "@chakra-ui/react"
 import { Link as NavLink } from "react-router-dom"
 import Logo from "../../../Logo/Logo"
 import { MenuItems } from "../../constants/Navbar.constants"

@@ -21,7 +21,7 @@ const CommentsList = () => {
 	}
 
 	return (
-		<Stack spacing="3">
+		<Stack spacing="3" py={{ base: "8", md: "12" }}>
 			<Stack spacing="4">
 				{comments?.map(comment => (
 					<CommentItem key={comment.id} comment={comment} />

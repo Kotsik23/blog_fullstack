@@ -1,15 +1,11 @@
 import { Select, useColorModeValue } from "@chakra-ui/react"
 import i18next from "i18next"
-import { ChangeEvent, useEffect, useState } from "react"
+import { ChangeEvent, useState } from "react"
 
 const LanguageSwithcer = () => {
 	const focusBorderColor = useColorModeValue("purple.500", "purple.200")
 
 	const [currentLanguage, setCurrentLanguage] = useState<string>(i18next.language)
-
-	useEffect(() => {
-		setCurrentLanguage(i18next.language)
-	}, [i18next.language])
 
 	const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
 		const newLanguage = event.target.value
