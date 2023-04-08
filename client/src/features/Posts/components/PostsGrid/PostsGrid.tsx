@@ -1,4 +1,4 @@
-import { Container, Stack, SimpleGrid, Center, Spinner } from "@chakra-ui/react"
+import { Container, Stack, SimpleGrid, Center, Spinner, Flex, Grid, Box, GridItem } from "@chakra-ui/react"
 import { postsApi } from "features/Posts/api/posts"
 import PostCard from "../PostCard/PostCard"
 import Error from "../Error/Error"

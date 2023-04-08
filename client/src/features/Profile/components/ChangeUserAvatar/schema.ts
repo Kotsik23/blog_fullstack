@@ -7,5 +7,8 @@ const FILE_SIZE = 5 * 1024 * 1024 // 5 MB
 export const changeAvatarSchema: ObjectSchema<ChangeAvatarFields> = object({
 	avatar: mixed()
 		.required("Выберите файл")
-		.test("fileSize", "Файл должен быть меньше 5 МБ", value => (value ? (value as File).size <= FILE_SIZE : true)),
+		.test("fileSize", "Файл должен быть меньше 5 МБ", value => (value ? (value as File).size <= FILE_SIZE : true))
+		.test("fileType", "Файл должен быть в формате JPEG, JPG, PNG", value =>
+			value ? SUPPORTED_FORMATS.includes((value as File).type) : true
+		),
 })

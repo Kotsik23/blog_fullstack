@@ -7,6 +7,10 @@ import { useTranslation } from "react-i18next"
 const Hero = () => {
 	const { t } = useTranslation()
 
+	const handleMoreClick = () => {
+		document.getElementById("stats")?.scrollIntoView()
+	}
+
 	return (
 		<Box position="relative" height={{ lg: "720px" }} as="section">
 			<Container maxW="container.xl" py={{ base: "16", md: "24" }} height="full">
@@ -42,7 +46,7 @@ const Hero = () => {
 							>
 								{t("hero.start")}
 							</Button>
-							<Button variant="outline" rightIcon={<ArrowDownIcon />} size="lg">
+							<Button variant="outline" rightIcon={<ArrowDownIcon />} size="lg" onClick={handleMoreClick}>
 								{t("hero.more")}
 							</Button>
 						</Stack>

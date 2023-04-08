@@ -42,6 +42,7 @@
    },
    "toast": {
       "success": "Success",
+      "error": "Error",
       "badRequest": "Bad Request",
       "logout": "You have successfully logged out of your account",
       "login": "You have successfully logged in",
@@ -112,8 +113,7 @@
    "updateAvatar": {
       "heading": "Profile Picture",
       "description": "It will be displayed in the profile header and when publishing",
-      "cancel": "Cancel",
-      "save": "Save Changes"
+      "reset": "Reset changes"
    },
    "updateEmail": {
       "oldEmail": "Current e-mail address",

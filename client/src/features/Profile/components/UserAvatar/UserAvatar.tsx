@@ -1,20 +1,21 @@
-import { AvatarProps, Avatar, AvatarBadge, Icon } from "@chakra-ui/react"
-import { GoVerified } from "react-icons/go"
-
-interface UserAvatarProps extends AvatarProps {
-	isVerified?: boolean
-}
+import { Avatar, AvatarBadge, IconButton } from "@chakra-ui/react"
+import { FiEdit2 } from "react-icons/fi"
+import { UserAvatarProps } from "./UserAvatar.props"
 
 const UserAvatar = (props: UserAvatarProps) => {
-	const { isVerified, ...avatarProps } = props
-
+	const { handleClick, ...avatarProps } = props
 	return (
 		<Avatar size="2xl" {...avatarProps}>
-			{isVerified && (
-				<AvatarBadge borderWidth="4px" borderColor="bg-surface" insetEnd="3" bottom="3" bg="bg-surface">
-					<Icon as={GoVerified} fontSize="2xl" color="primary" />
-				</AvatarBadge>
-			)}
+			<AvatarBadge borderWidth="4px" borderColor="bg-surface" insetEnd="3" bottom="3" bg="bg-surface">
+				<IconButton
+					size="sm"
+					icon={<FiEdit2 />}
+					aria-label="change-avatar"
+					rounded="full"
+					colorScheme="purple"
+					onClick={handleClick}
+				/>
+			</AvatarBadge>
 		</Avatar>
 	)
 }

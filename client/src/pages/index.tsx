@@ -5,8 +5,8 @@ import { ROUTES } from "shared/constants/routes"
 import { MainPage } from "./MainPage"
 import ScrollToTop from "shared/utils/ScrollToTop"
 import CreatePostPage from "./CreatePostPage"
-import PostPage from "./PostPage"
-import PostsPage from "./PostsPage"
+import OnePostPage from "./PostPage"
+import AllPostsPage from "./PostsPage"
 import ProfilePage from "./ProfilePage"
 
 const Routing = () => {
@@ -19,8 +19,8 @@ const Routing = () => {
 					<Route path={ROUTES.LOGIN} element={<Auth type="login" />} />
 					<Route path={ROUTES.REGISTER} element={<Auth type="register" />} />
 
-					<Route path={ROUTES.POSTS} element={<PostsPage />} />
-					<Route path={ROUTES.POSTS + "/:id"} element={<PostPage />} />
+					<Route path={ROUTES.POSTS} element={<AllPostsPage />} />
+					<Route path={ROUTES.POSTS + "/:id"} element={<OnePostPage />} />
 					<Route path={ROUTES.CREATE} element={<CreatePostPage />} />
 
 					<Route path={ROUTES.PROFILE} element={<ProfilePage />} />

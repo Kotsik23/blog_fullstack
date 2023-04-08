@@ -1,5 +1,5 @@
-import { useColorModeValue, Flex, Text } from "@chakra-ui/react"
-import { UserAvatar } from "features/Profile"
+import { useColorModeValue, Flex, Text, Avatar } from "@chakra-ui/react"
+
 import { Link } from "react-router-dom"
 import { IUser } from "shared/types/user"
 
@@ -22,7 +22,7 @@ const PostAuthor = ({ author }: PostAuthorProps) => {
 			as={Link}
 			to={"/author"}
 		>
-			<UserAvatar size="md" src={author.avatarUrl} />
+			<Avatar size="md" src={author.avatarUrl} />
 			<Text color="muted" fontSize="sm">
 				{author.email}
 			</Text>

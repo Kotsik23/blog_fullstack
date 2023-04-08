@@ -79,7 +79,7 @@ const Auth = ({ type }: IAuthFormProps) => {
 								as={NavLink}
 								to={isLogin ? ROUTES.REGISTER : ROUTES.LOGIN}
 							>
-								{isLogin ? t("auth.login") : t("auth.register")}
+								{isLogin ? t("auth.register") : t("auth.login")}
 							</Button>
 						</HStack>
 					</Stack>

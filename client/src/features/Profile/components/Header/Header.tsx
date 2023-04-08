@@ -2,8 +2,8 @@ import { Badge, Button, Flex, Heading, Stack, ThemeTypings } from "@chakra-ui/re
 import { BsFillPersonPlusFill, BsFillShareFill } from "react-icons/bs"
 import SectionHeader from "components/SectionHeader/SectionHeader"
 import { useAppSelector } from "shared/utils/redux"
-import { UserAvatar } from "features/Profile"
 import { useTranslation } from "react-i18next"
+import ChangeUserAvatar from "../ChangeUserAvatar/ChangeUserAvatar"
 
 const colors: Record<string, ThemeTypings["colorSchemes"]> = {
 	ADMIN: "green",
@@ -20,7 +20,7 @@ const Header = () => {
 			<SectionHeader>{t("profile.heading")}</SectionHeader>
 			<Flex justify="space-between" align="flex-start" direction={{ base: "column", md: "row" }} gap="8">
 				<Flex gap="4" align={{ base: "flex-start", md: "center" }} direction={{ base: "column", md: "row" }}>
-					<UserAvatar src={user?.avatarUrl} isVerified />
+					<ChangeUserAvatar src={user?.avatarUrl} />
 
 					<Stack spacing="4">
 						<Heading size="md" fontWeight="semibold">

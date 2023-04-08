@@ -6,7 +6,7 @@ const Stats = () => {
 	const { t } = useTranslation()
 	const isMobile = useBreakpointValue({ base: true, md: false })
 	return (
-		<Container maxW="container.xl" py={{ base: "16", md: "24" }} as="section">
+		<Container maxW="container.xl" py={{ base: "16", md: "24" }} as="section" id="stats">
 			<Stack spacing={{ base: "12", md: "16" }} textAlign="center" align="center">
 				<Stack spacing={{ base: "4", md: "5" }}>
 					<Heading size="lg">{t("stats.heading")}</Heading>
