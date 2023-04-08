@@ -8,23 +8,30 @@ import CreatePostPage from "./CreatePostPage"
 import OnePostPage from "./PostPage"
 import AllPostsPage from "./PostsPage"
 import ProfilePage from "./ProfilePage"
+import WithUser from "app/hoc/WithUser"
+import RequiredAuth from "app/hoc/RequiredAuth"
 
 const Routing = () => {
 	return (
 		<ScrollToTop>
 			<Routes>
-				<Route path={ROUTES.MAIN} element={<MainLayout />}>
-					<Route index element={<MainPage />} />
+				<Route element={<WithUser />}>
+					<Route path={ROUTES.MAIN} element={<MainLayout />}>
+						<Route index element={<MainPage />} />
 
-					<Route path={ROUTES.LOGIN} element={<Auth type="login" />} />
-					<Route path={ROUTES.REGISTER} element={<Auth type="register" />} />
+						<Route path={ROUTES.LOGIN} element={<Auth type="login" />} />
+						<Route path={ROUTES.REGISTER} element={<Auth type="register" />} />
 
-					<Route path={ROUTES.POSTS} element={<AllPostsPage />} />
-					<Route path={ROUTES.POSTS + "/:id"} element={<OnePostPage />} />
-					<Route path={ROUTES.CREATE} element={<CreatePostPage />} />
-					<Route path={`${ROUTES.EDIT}/:id`} element={<CreatePostPage />} />
+						<Route path={ROUTES.POSTS} element={<AllPostsPage />} />
+						<Route path={ROUTES.POSTS + "/:id"} element={<OnePostPage />} />
 
-					<Route path={ROUTES.PROFILE} element={<ProfilePage />} />
+						{/* PAGES FOR AUTHENTICATED USERS */}
+						<Route element={<RequiredAuth />}>
+							<Route path={ROUTES.CREATE} element={<CreatePostPage />} />
+
+							<Route path={ROUTES.PROFILE} element={<ProfilePage />} />
+						</Route>
+					</Route>
 				</Route>
 			</Routes>
 		</ScrollToTop>

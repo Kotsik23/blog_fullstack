@@ -16,9 +16,11 @@ export const authSlice = createSlice({
 	reducers: {
 		setCredentials: (state, action: PayloadAction<IAuthState>) => {
 			const { accessToken, user } = action.payload
+
 			state.accessToken = accessToken
 			state.user = user
-			localStorage.setItem(LS_AUTH_KEY, JSON.stringify(state))
+
+			localStorage.setItem(LS_AUTH_KEY, JSON.stringify({ ...state }))
 		},
 
 		logout: state => {

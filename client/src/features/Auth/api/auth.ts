@@ -39,7 +39,7 @@ export const authApi = apiSlice.injectEndpoints({
 			},
 		}),
 
-		getProfile: build.mutation<{ user: IUser }, void>({
+		getProfile: build.mutation<IUser, void>({
 			query: () => ({
 				url: API_ROUTES.PROFILE,
 				method: API_METHODS.GET,
@@ -49,7 +49,8 @@ export const authApi = apiSlice.injectEndpoints({
 					const { data } = await api.queryFulfilled
 
 					const accessToken = (api.getState() as RootState).auth.accessToken
-					api.dispatch(authActions.setCredentials({ accessToken, user: data.user }))
+
+					api.dispatch(authActions.setCredentials({ accessToken, user: data }))
 				} catch (error) {
 					console.log(error)
 				}

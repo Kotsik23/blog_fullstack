@@ -9,9 +9,10 @@ import LikeButton from "../LikeButton/LikeButton"
 import PostAuthor from "../PostAuthor/PostAuthor"
 import { useAppSelector } from "shared/utils/redux"
 import { FiEdit } from "react-icons/fi"
-import { MdDeleteOutline } from "react-icons/md"
 import { ROUTES } from "shared/constants/routes"
 import DeleteButton from "../DeleteButon/DeleteButton"
+import { checkAccessByRole } from "shared/utils/checkAccessByRole"
+import { ROLES } from "shared/constants/roles"
 
 const OnePostInfo = () => {
 	const { t } = useTranslation()
@@ -21,6 +22,7 @@ const OnePostInfo = () => {
 	const { data: post, isLoading, isError, error } = postsApi.useGetPostByIdQuery(id!)
 
 	const isAuthor = post?.author.id === user?.id
+	const isAccessByRole = checkAccessByRole(user, [ROLES.ADMIN, ROLES.MANAGER])
 
 	if (isLoading) {
 		return (
@@ -44,7 +46,7 @@ const OnePostInfo = () => {
 					</Text>
 					<Heading size={{ base: "lg", md: "xl" }}>{post?.title}</Heading>
 					<PostAuthor author={post?.author!} />
-					{isAuthor && (
+					{(isAuthor || isAccessByRole) && (
 						<Flex gap="4">
 							<Button
 								as={NavLink}
