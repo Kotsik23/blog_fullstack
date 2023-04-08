@@ -48,6 +48,7 @@
       "login": "You have successfully logged in",
       "register": "Account successfully created",
       "addComment": "Comment added successfully",
+      "deleteComment": "Comment successfully deleted",
       "addPost": "The post was successfully created",
       "deletePost": "The post was successfully deleted",
       "updateAvatar": "You have successfully changed your profile picture",

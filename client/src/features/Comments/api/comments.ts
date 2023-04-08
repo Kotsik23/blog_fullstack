@@ -25,9 +25,8 @@ export const commentsApi = apiSlice.injectEndpoints({
 
 		deleteComment: build.mutation<IComment, number>({
 			query: id => ({
-				url: API_ROUTES.COMMENTS,
+				url: `${API_ROUTES.COMMENTS}/${id}`,
 				method: API_METHODS.DELETE,
-				params: id,
 			}),
 			invalidatesTags: (result, error, arg) => [{ type: "Comment", id: arg }],
 		}),
