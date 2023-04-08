@@ -54,5 +54,13 @@ export const postsApi = apiSlice.injectEndpoints({
 			}),
 			invalidatesTags: (result, error, arg) => [{ type: "Post", id: arg }],
 		}),
+
+		uploadFile: build.query<{ url: string }, FormData>({
+			query: body => ({
+				url: "/files",
+				method: API_METHODS.POST,
+				body,
+			}),
+		}),
 	}),
 })

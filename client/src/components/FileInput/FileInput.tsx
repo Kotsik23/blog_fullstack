@@ -1,5 +1,5 @@
 import { Button, Flex, Icon, Image, Input, Stack, Text } from "@chakra-ui/react"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useFormContext } from "react-hook-form"
 import { SUPPORTED_FORMATS } from "shared/constants/files"
 import { FileInputProps } from "./FileInput.props"
@@ -17,6 +17,13 @@ const FileInput = ({ name, accept = SUPPORTED_FORMATS }: FileInputProps) => {
 	} = useFormContext()
 
 	const stringAccept = accept.join(", ")
+
+	useEffect(() => {
+		const defaultPreview = getValues(name)
+		if (typeof defaultPreview === "string") {
+			setPreviewUrl(defaultPreview)
+		}
+	}, [getValues(name)])
 
 	const [previewUrl, setPreviewUrl] = useState<string | null>(null)
 	const { t } = useTranslation()

@@ -6,5 +6,5 @@ export const schema: ObjectSchema<CreatePostFields> = object({
 	content: mixed().required("Напишите содержание"),
 	file: mixed()
 		.required("Выберите файл")
-		.test("fileSize", "Файл должен быть меньше 1 МБ", value => (value ? (value as File).size <= 1000000 : true)),
+		.test("fileSize", "Файл должен быть меньше 5 МБ", value => (value ? (value as File).size <= 5e6 : true)),
 })

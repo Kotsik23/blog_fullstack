@@ -16,6 +16,7 @@ import { postsApi } from "features/Posts/api/posts"
 import { useState } from "react"
 import { FormProvider, SubmitHandler, useForm } from "react-hook-form"
 import { useTranslation } from "react-i18next"
+import { useParams } from "react-router-dom"
 import { TOAST_DEFAULT_OPTIONS } from "shared/constants/toast"
 import TextEditor from "../TextEditor/TextEditor"
 import { schema } from "./schema"
@@ -29,6 +30,10 @@ const defaultValues: CreatePostFields = {
 
 const CreateForm = () => {
 	const { t } = useTranslation()
+	const { id } = useParams()
+
+	const isEdit = Boolean(id)
+
 	const methods = useForm<CreatePostFields>({
 		resolver: yupResolver(schema),
 		defaultValues,
@@ -41,24 +46,27 @@ const CreateForm = () => {
 	const [addPost, { isLoading }] = postsApi.useAddPostMutation()
 
 	const onSubmit: SubmitHandler<CreatePostFields> = async data => {
-		const formData = new FormData()
-		formData.append("title", data.title)
-		formData.append("content", data.content)
-		formData.append("image", data.file)
 		try {
+			const formData = new FormData()
+			formData.append("title", data.title)
+			formData.append("content", data.content)
+			formData.append("image", data.file)
 			await addPost(formData).unwrap()
+
 			toast({
 				status: "success",
 				title: t("toast.success"),
-				description: t("toast.addPost"),
+				description: isEdit ? "Successfully updated" : t("toast.addPost"),
 			})
-			reset()
+			reset(defaultValues)
+			setEditorState(defaultValues.content)
 		} catch (error) {
 			console.log(error)
 		}
 	}
 
 	const primaryColor = useColorModeValue("purple.500", "purple.200")
+
 	return (
 		<FormProvider {...methods}>
 			<Stack as="form" spacing="6">
@@ -71,6 +79,7 @@ const CreateForm = () => {
 						placeholder={t("createPostForm.placeholder")!}
 						focusBorderColor={primaryColor}
 						size="lg"
+						fontWeight="semibold"
 						{...register("title")}
 					/>
 					<FormErrorMessage>{formState.errors.title?.message}</FormErrorMessage>

@@ -22,6 +22,7 @@ const Routing = () => {
 					<Route path={ROUTES.POSTS} element={<AllPostsPage />} />
 					<Route path={ROUTES.POSTS + "/:id"} element={<OnePostPage />} />
 					<Route path={ROUTES.CREATE} element={<CreatePostPage />} />
+					<Route path={`${ROUTES.EDIT}/:id`} element={<CreatePostPage />} />
 
 					<Route path={ROUTES.PROFILE} element={<ProfilePage />} />
 				</Route>

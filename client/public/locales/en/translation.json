@@ -49,6 +49,7 @@
       "register": "Account successfully created",
       "addComment": "Comment added successfully",
       "addPost": "The post was successfully created",
+      "deletePost": "The post was successfully deleted",
       "updateAvatar": "You have successfully changed your profile picture",
       "updateEmail": "You have successfully changed your e-mail",
       "updatePassword": "You have successfully changed your password"
@@ -141,6 +142,14 @@
    "onePost": {
       "published": "Published",
       "content": "Content",
-      "comments": "Comments"
+      "comments": "Comments",
+      "tooltipDelete": "Delete Post",
+      "editBtn": "Edit post"
+   },
+   "confirmDeletePost": {
+      "heading": "Confirmation of deletion",
+      "body": "Do you really want to delete this post?",
+      "cancel": "Cancel",
+      "delete": "Delete"
    }
 }

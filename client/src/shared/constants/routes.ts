@@ -5,4 +5,5 @@ export enum ROUTES {
 	PROFILE = "/profile",
 	POSTS = "/posts",
 	CREATE = "/posts/create",
+	EDIT = "/posts/edit",
 }

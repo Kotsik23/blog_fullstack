@@ -6,7 +6,7 @@
    font-size: var(--chakra-fontSizes-xl);
    border: 1px solid var(--chakra-colors-gray-200);
    min-height: 150px;
-   line-height: 0.5;
+   /* line-height: 0.5; */
 	cursor: text;
 }
 

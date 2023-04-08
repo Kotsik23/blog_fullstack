@@ -2,17 +2,25 @@ import { postsApi } from "../../api/posts"
 import { formatDate } from "shared/utils/formatDate"
 import SectionHeader from "components/SectionHeader/SectionHeader"
 import { useTranslation } from "react-i18next"
-import { useParams } from "react-router-dom"
-import { Box, Center, Container, Heading, Spinner, Stack, Text, Image } from "@chakra-ui/react"
+import { useParams, Link as NavLink } from "react-router-dom"
+import { Box, Center, Container, Heading, Spinner, Stack, Text, Image, Button, Flex } from "@chakra-ui/react"
 import parse from "html-react-parser"
 import LikeButton from "../LikeButton/LikeButton"
 import PostAuthor from "../PostAuthor/PostAuthor"
+import { useAppSelector } from "shared/utils/redux"
+import { FiEdit } from "react-icons/fi"
+import { MdDeleteOutline } from "react-icons/md"
+import { ROUTES } from "shared/constants/routes"
+import DeleteButton from "../DeleteButon/DeleteButton"
 
 const OnePostInfo = () => {
 	const { t } = useTranslation()
 	const { id } = useParams()
 
+	const user = useAppSelector(state => state.auth.user)
 	const { data: post, isLoading, isError, error } = postsApi.useGetPostByIdQuery(id!)
+
+	const isAuthor = post?.author.id === user?.id
 
 	if (isLoading) {
 		return (
@@ -36,6 +44,20 @@ const OnePostInfo = () => {
 					</Text>
 					<Heading size={{ base: "lg", md: "xl" }}>{post?.title}</Heading>
 					<PostAuthor author={post?.author!} />
+					{isAuthor && (
+						<Flex gap="4">
+							<Button
+								as={NavLink}
+								to={`${ROUTES.EDIT}/${id}`}
+								variant="outline"
+								colorScheme="gray"
+								leftIcon={<FiEdit />}
+							>
+								{t("onePost.editBtn")}
+							</Button>
+							<DeleteButton />
+						</Flex>
+					)}
 				</Stack>
 			</Container>
 			<Box overflow="hidden" py={{ base: "6", md: "12" }}>
