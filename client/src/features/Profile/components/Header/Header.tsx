@@ -1,5 +1,4 @@
-import { Badge, Button, Flex, Heading, Stack, ThemeTypings } from "@chakra-ui/react"
-import { BsFillPersonPlusFill, BsFillShareFill } from "react-icons/bs"
+import { Badge, Flex, Heading, Stack, ThemeTypings } from "@chakra-ui/react"
 import SectionHeader from "components/SectionHeader/SectionHeader"
 import { useAppSelector } from "shared/utils/redux"
 import { useTranslation } from "react-i18next"
@@ -34,15 +33,6 @@ const Header = () => {
 							))}
 						</Flex>
 					</Stack>
-				</Flex>
-
-				<Flex gap="3" direction={{ base: "column", md: "row" }} w={{ base: "full", md: "sm" }}>
-					<Button variant="outline" w="full" colorScheme="purple" leftIcon={<BsFillPersonPlusFill />}>
-						{t("profile.subscribe")}
-					</Button>
-					<Button variant="outline" w="full" leftIcon={<BsFillShareFill />}>
-						{t("profile.share")}
-					</Button>
 				</Flex>
 			</Flex>
 		</Stack>

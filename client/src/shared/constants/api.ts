@@ -7,6 +7,7 @@ export enum API_ROUTES {
 
 	POSTS = "/posts",
 	COMMENTS = "/comments",
+	USERS = "/users",
 }
 
 export enum API_METHODS {

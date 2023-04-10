@@ -10,6 +10,7 @@ import AllPostsPage from "./PostsPage"
 import ProfilePage from "./ProfilePage"
 import WithUser from "app/hoc/WithUser"
 import RequiredAuth from "app/hoc/RequiredAuth"
+import AuthorPage from "./AuthorPage"
 
 const Routing = () => {
 	return (
@@ -25,11 +26,13 @@ const Routing = () => {
 						<Route path={ROUTES.POSTS} element={<AllPostsPage />} />
 						<Route path={ROUTES.POSTS + "/:id"} element={<OnePostPage />} />
 
+						<Route path={`${ROUTES.AUTHOR}/:id`} element={<AuthorPage />} />
+
 						{/* PAGES FOR AUTHENTICATED USERS */}
 						<Route element={<RequiredAuth />}>
 							<Route path={ROUTES.CREATE} element={<CreatePostPage />} />
 
-							<Route path={ROUTES.PROFILE} element={<ProfilePage />} />
+							<Route path={`${ROUTES.PROFILE}`} element={<ProfilePage />} />
 						</Route>
 					</Route>
 				</Route>

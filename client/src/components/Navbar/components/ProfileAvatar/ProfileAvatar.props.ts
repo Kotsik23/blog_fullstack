@@ -1,3 +1,5 @@
+import { IUser } from "shared/types/user"
+
 export interface ProfileAvatarProps {
-	avatarUrl: string | undefined
+	user: IUser
 }

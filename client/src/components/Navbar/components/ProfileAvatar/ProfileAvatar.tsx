@@ -8,7 +8,7 @@ import {
 	useDisclosure,
 	useToast,
 } from "@chakra-ui/react"
-import { Link as NavLink, useNavigate } from "react-router-dom"
+import { Link as NavLink, useNavigate, useParams } from "react-router-dom"
 import { MdPerson, MdLogout } from "react-icons/md"
 import { AiOutlinePlus } from "react-icons/ai"
 import { TOAST_DEFAULT_OPTIONS } from "shared/constants/toast"
@@ -18,7 +18,7 @@ import { ROUTES } from "shared/constants/routes"
 import { ProfileAvatarProps } from "./ProfileAvatar.props"
 import { useTranslation } from "react-i18next"
 
-const ProfileAvatar = ({ avatarUrl }: ProfileAvatarProps) => {
+const ProfileAvatar = ({ user }: ProfileAvatarProps) => {
 	const { t } = useTranslation()
 	const { isOpen, onOpen, onClose } = useDisclosure()
 	const [logout, { isLoading }] = authApi.useLogoutMutation()
@@ -42,7 +42,7 @@ const ProfileAvatar = ({ avatarUrl }: ProfileAvatarProps) => {
 	return (
 		<>
 			<Menu>
-				<MenuButton as={Avatar} size="sm" cursor="pointer" src={avatarUrl} />
+				<MenuButton as={Avatar} size="sm" cursor="pointer" src={user.avatarUrl} />
 				<MenuList>
 					<MenuItem icon={<MdPerson />} fontWeight="semibold" as={NavLink} to={ROUTES.PROFILE}>
 						{t("profileAvatar.profile")}

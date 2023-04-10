@@ -40,7 +40,7 @@ const Navbar = () => {
 					<LanguageSwithcer />
 					<ThemeSwitcher />
 					{user ? (
-						<ProfileAvatar avatarUrl={user.avatarUrl} />
+						<ProfileAvatar user={user} />
 					) : (
 						<Button colorScheme="purple" as={NavLink} to={ROUTES.REGISTER}>
 							{t("navbar.register")}

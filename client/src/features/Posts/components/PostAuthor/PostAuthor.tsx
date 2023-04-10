@@ -1,6 +1,7 @@
 import { useColorModeValue, Flex, Text, Avatar } from "@chakra-ui/react"
 
 import { Link } from "react-router-dom"
+import { ROUTES } from "shared/constants/routes"
 import { IUser } from "shared/types/user"
 
 interface PostAuthorProps {
@@ -20,7 +21,7 @@ const PostAuthor = ({ author }: PostAuthorProps) => {
 			rounded="lg"
 			cursor="pointer"
 			as={Link}
-			to={"/author"}
+			to={`${ROUTES.AUTHOR}/${author.id}`}
 		>
 			<Avatar size="md" src={author.avatarUrl} />
 			<Text color="muted" fontSize="sm">
