@@ -38,7 +38,8 @@
    "profileAvatar": {
       "profile": "Profile",
       "createPost": "Create post",
-      "logout": "Logout"
+      "logout": "Logout",
+      "author": "Author"
    },
    "toast": {
       "success": "Success",
@@ -67,7 +68,7 @@
    "links": {
       "main": "Main",
       "news": "News",
-      "contacts": "Contacts"
+      "author": "Author"
    },
    "fileInput": {
       "text": "Click to download"

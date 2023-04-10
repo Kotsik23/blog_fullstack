@@ -1,8 +1,9 @@
-import { Controller, Delete, Get, Param, ParseIntPipe } from "@nestjs/common"
+import { Controller, Delete, Get, Param, ParseIntPipe, Patch } from "@nestjs/common"
 import { UserService } from "./user.service"
 import { Auth } from "../auth/guards/auth.guard"
 import { CheckRolesDecorator } from "../decorators/check-roles.decorator"
 import { Role } from "@prisma/client"
+import { CurrentUser } from "src/auth/decorators/current-user.decorator"
 
 @Controller("users")
 export class UserController {
@@ -18,6 +19,15 @@ export class UserController {
 	@Get(":id")
 	async getAuthorInfo(@Param("id", ParseIntPipe) id: number) {
 		return this.userService.getAuthorInfo(id)
+	}
+
+	@Auth()
+	@Patch(":id")
+	async subscribeToAuthor(
+		@CurrentUser("id") userId: number,
+		@Param("id", ParseIntPipe) id: number
+	) {
+		return this.userService.subscribeToAuthor(userId, id)
 	}
 
 	@Auth()

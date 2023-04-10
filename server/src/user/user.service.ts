@@ -1,4 +1,4 @@
-import { Injectable } from "@nestjs/common"
+import { BadRequestException, Injectable } from "@nestjs/common"
 import { User } from "@prisma/client"
 import { PrismaService } from "../prisma/prisma.service"
 import { CreateUserDto } from "./dto/create-user.dto"
@@ -61,6 +61,8 @@ export class UserService {
 			},
 		})
 	}
+
+	async subscribeToAuthor(userId: number, id: number) {}
 
 	excludeFields<User, Key extends keyof User>(user: User, keys: Key[]): Omit<User, Key> {
 		for (let key of keys) {

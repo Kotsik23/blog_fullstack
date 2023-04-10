@@ -3,9 +3,11 @@ import { ArrowForwardIcon, ArrowDownIcon } from "@chakra-ui/icons"
 import { Link as NavLink } from "react-router-dom"
 import { ROUTES } from "shared/constants/routes"
 import { useTranslation } from "react-i18next"
+import { useAppSelector } from "shared/utils/redux"
 
 const Hero = () => {
 	const { t } = useTranslation()
+	const user = useAppSelector(state => state.auth.user)
 
 	const handleMoreClick = () => {
 		document.getElementById("stats")?.scrollIntoView()
@@ -42,7 +44,7 @@ const Hero = () => {
 								rightIcon={<ArrowForwardIcon />}
 								size="lg"
 								as={NavLink}
-								to={ROUTES.REGISTER}
+								to={user ? ROUTES.POSTS : ROUTES.REGISTER}
 							>
 								{t("hero.start")}
 							</Button>

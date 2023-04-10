@@ -17,9 +17,4 @@ export const MenuItems: IMenuItem[] = [
 		text: "links.news",
 		link: ROUTES.POSTS,
 	},
-	{
-		id: 3,
-		text: "links.contacts",
-		link: "/#contacts",
-	},
 ]

@@ -38,7 +38,8 @@
    "profileAvatar": {
       "profile": "Профиль",
       "createPost": "Создать пост",
-      "logout": "Выйти"
+      "logout": "Выйти",
+      "author": "Автор"
    },
    "toast": {
       "success": "Успешно",
@@ -67,7 +68,7 @@
    "links": {
       "main": "Главная",
       "news": "Новости",
-      "contacts": "Контакты"
+      "author": "Автор"
    },
    "fileInput": {
       "text": "Нажмите для загрузки"

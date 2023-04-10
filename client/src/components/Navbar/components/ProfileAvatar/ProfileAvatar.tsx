@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react"
 import { Link as NavLink, useNavigate, useParams } from "react-router-dom"
 import { MdPerson, MdLogout } from "react-icons/md"
-import { AiOutlinePlus } from "react-icons/ai"
+import { AiOutlinePlus, AiTwotoneBulb } from "react-icons/ai"
 import { TOAST_DEFAULT_OPTIONS } from "shared/constants/toast"
 import { authApi } from "features/Auth/api/auth"
 import ConfirmLogoutDialog from "../ConfirmLogoutDialog/ConfirmLogout"
@@ -49,6 +49,9 @@ const ProfileAvatar = ({ user }: ProfileAvatarProps) => {
 					</MenuItem>
 					<MenuItem icon={<AiOutlinePlus />} fontWeight="semibold" as={NavLink} to={ROUTES.CREATE}>
 						{t("profileAvatar.createPost")}
+					</MenuItem>
+					<MenuItem icon={<AiTwotoneBulb />} fontWeight="semibold" as={NavLink} to={`${ROUTES.AUTHOR}/${user.id}`}>
+						{t("profileAvatar.author")}
 					</MenuItem>
 					<MenuItem
 						icon={<MdLogout />}
