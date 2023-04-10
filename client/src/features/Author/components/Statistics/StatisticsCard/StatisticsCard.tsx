@@ -23,31 +23,6 @@ const StatisticsCard = ({ icon, description, value, color }: StatisticsCardProps
 				<Text fontWeight="semibold">{description}</Text>
 			</CardBody>
 		</Card>
-		// <Flex
-		// 	align="flex-start"
-		// 	justify="center"
-		// 	rounded="lg"
-		// 	shadow="md"
-		// 	p="6"
-		// 	direction="column"
-		// 	gap="12"
-		// 	bgColor={color}
-		// >
-		// <Flex align="center" gap="4">
-		// 	<Box
-		// 		rounded="lg"
-		// 		bgColor={useColorModeValue("white", "gray.800")}
-		// 		p="2"
-		// 		display="flex"
-		// 		alignItems="center"
-		// 		justifyContent="center"
-		// 	>
-		// 		<Icon as={icon} fontSize="20" color={color} />
-		// 	</Box>
-		// 	<Heading size="md">{value}</Heading>
-		// </Flex>
-		// <Text>{description}</Text>
-		// </Flex>
 	)
 }
 

@@ -123,7 +123,9 @@ export class AuthService {
 
 	async updateProfileAvatar(id: number, avatar: Express.Multer.File) {
 		const user = await this.userService.getUserById(id)
-		await this.fileService.deleteFileFromFirebase(user.avatarUrl)
+		if (user.avatarUrl) {
+			await this.fileService.deleteFileFromFirebase(user.avatarUrl)
+		}
 		const loadedImage = await this.fileService.uploadFileToFirebase("avatar", avatar)
 		return await this.userService.updateUser(id, { avatarUrl: loadedImage.url })
 	}

@@ -1,6 +1,6 @@
 import { Stack } from "@chakra-ui/react"
 import SectionHeader from "components/SectionHeader/SectionHeader"
-import { AuthorHeader, AuthorStatistics } from "features/Author"
+import { AuthorHeader, AuthorPostsList, AuthorStatistics } from "features/Author"
 import { useParams } from "react-router-dom"
 
 const AuthorPage = () => {
@@ -12,6 +12,8 @@ const AuthorPage = () => {
 			<AuthorHeader />
 			<SectionHeader>Статистика</SectionHeader>
 			<AuthorStatistics />
+			<SectionHeader>Посты автора</SectionHeader>
+			<AuthorPostsList />
 		</Stack>
 	)
 }

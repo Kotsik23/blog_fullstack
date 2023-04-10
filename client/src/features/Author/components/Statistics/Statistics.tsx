@@ -1,4 +1,4 @@
-import { Center, Spinner, Heading, SimpleGrid, useColorModeValue } from "@chakra-ui/react"
+import { Center, Spinner, Heading, SimpleGrid } from "@chakra-ui/react"
 import { authorApi } from "../../api/author"
 import { useParams } from "react-router-dom"
 import StatisticsCard from "./StatisticsCard/StatisticsCard"
@@ -7,10 +7,6 @@ import { MdOutlineFavorite, MdComment, MdArticle } from "react-icons/md"
 const Statistics = () => {
 	const { id } = useParams()
 	const { data: author, isLoading, isError, error } = authorApi.useGetAuthorInfoQuery(+id!)
-
-	const purpleColor = useColorModeValue("purple.400", "purple.300")
-	const blueColor = useColorModeValue("blue.400", "blue.300")
-	const orangeColor = useColorModeValue("orange.400", "orange.300")
 
 	if (isLoading) {
 		return (
@@ -31,19 +27,19 @@ const Statistics = () => {
 				icon={MdArticle}
 				value={author?._count.posts!}
 				description="Количество постов у автора"
-				color={purpleColor}
+				color={"purple.400"}
 			/>
 			<StatisticsCard
 				icon={MdOutlineFavorite}
 				value={author?._count.likedPosts!}
 				description="Столько постов оценил автор"
-				color={blueColor}
+				color={"blue.400"}
 			/>
 			<StatisticsCard
 				icon={MdComment}
 				value={author?._count.comments!}
 				description="Активность в комментариях"
-				color={orangeColor}
+				color={"orange.400"}
 			/>
 		</SimpleGrid>
 	)
