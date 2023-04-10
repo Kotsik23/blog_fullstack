@@ -15,11 +15,9 @@ export class UserController {
 		return this.userService.getAllUsers()
 	}
 
-	@Auth()
-	@CheckRolesDecorator(Role.ADMIN, Role.MANAGER)
 	@Get(":id")
-	async getUserById(@Param("id", ParseIntPipe) id: number) {
-		return this.userService.getUserById(id)
+	async getAuthorInfo(@Param("id", ParseIntPipe) id: number) {
+		return this.userService.getAuthorInfo(id)
 	}
 
 	@Auth()

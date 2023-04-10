@@ -47,6 +47,21 @@ export class UserService {
 		})
 	}
 
+	async getAuthorInfo(id: number) {
+		return this.prisma.user.findUniqueOrThrow({
+			where: { id },
+			include: {
+				_count: {
+					select: {
+						comments: true,
+						likedPosts: true,
+						posts: true,
+					},
+				},
+			},
+		})
+	}
+
 	excludeFields<User, Key extends keyof User>(user: User, keys: Key[]): Omit<User, Key> {
 		for (let key of keys) {
 			delete user[key]
