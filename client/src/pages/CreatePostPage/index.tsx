@@ -8,7 +8,6 @@ const CreatePostPage = () => {
 	const { id } = useParams()
 	const isEdit = Boolean(id)
 	const { t } = useTranslation()
-
 	return (
 		<Stack>
 			<SectionHeader>{isEdit ? `Редактирование поста #${id}` : t("createPost.heading")}</SectionHeader>

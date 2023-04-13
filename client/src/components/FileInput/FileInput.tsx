@@ -76,8 +76,8 @@ const FileInput = ({ name, accept = SUPPORTED_FORMATS }: FileInputProps) => {
 					</Stack>
 				) : (
 					<Stack spacing="3" align="center">
-						<Icon as={errors.file ? BsX : IoCloudUploadOutline} boxSize="10" />
-						<Text fontSize="lg">{errors.file ? (errors.file.message as string) : t("fileInput.text")}</Text>
+						<Icon as={IoCloudUploadOutline} boxSize="10" />
+						<Text fontSize="lg">{t("fileInput.text")}</Text>
 						<Text as="span" fontWeight="normal" textTransform="uppercase">
 							{accept.map(item => item.replace("image/", "")).join(", ")}
 						</Text>

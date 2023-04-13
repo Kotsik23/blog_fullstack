@@ -30,13 +30,13 @@ export const postsApi = apiSlice.injectEndpoints({
 			invalidatesTags: ["Post"],
 		}),
 
-		updatePost: build.mutation<IPost, Partial<IPost>>({
-			query: body => ({
-				url: `${API_ROUTES.POSTS}/${body.id}`,
+		updatePost: build.mutation<IPost, { id: string; data: FormData }>({
+			query: ({ id, data }) => ({
+				url: `${API_ROUTES.POSTS}/${id}`,
 				method: API_METHODS.PATCH,
-				body,
+				body: data,
 			}),
-			invalidatesTags: (result, error, arg) => [{ type: "Post", id: arg.id }],
+			invalidatesTags: (result, error, arg) => [{ type: "Post" }],
 		}),
 
 		deletePost: build.mutation<IPost, number>({
