@@ -4,19 +4,21 @@ import { Post, Prisma } from "@prisma/client"
 import { CreatePostDto } from "./dto/create-post.dto"
 import { UpdatePostDto } from "./dto/update-post.dto"
 import { FileService } from "src/file/file.service"
+import { GetPostParams } from "./dto/get-posts-params.dto"
+import { PaginationService } from "src/pagination/pagination.service"
 
 @Injectable()
 export class PostService {
 	constructor(
 		private readonly prisma: PrismaService,
-		private readonly filesService: FileService
+		private readonly filesService: FileService,
+		private readonly paginationService: PaginationService
 	) {}
 
-	async getPosts(userId: number, limit: number): Promise<Post[]> {
-		return this.prisma.post.findMany({
-			where: {
-				userId,
-			},
+	async getPosts(params: GetPostParams) {
+		const { skip, perPage } = this.paginationService.getPagination(params)
+
+		const posts = await this.prisma.post.findMany({
 			include: {
 				author: {
 					select: {
@@ -31,7 +33,23 @@ export class PostService {
 					},
 				},
 			},
-			take: limit,
+			skip,
+			take: perPage,
+		})
+
+		const total = await this.prisma.post.count()
+
+		return {
+			posts,
+			total,
+		}
+	}
+
+	async getUserPosts(userId: number): Promise<Post[]> {
+		return this.prisma.post.findMany({
+			where: {
+				userId,
+			},
 		})
 	}
 

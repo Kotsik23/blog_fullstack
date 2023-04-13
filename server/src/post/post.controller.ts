@@ -22,22 +22,25 @@ import { CreatePostDto } from "./dto/create-post.dto"
 import { UpdatePostDto } from "./dto/update-post.dto"
 import { FileInterceptor } from "@nestjs/platform-express"
 import { FileValidationPipe } from "src/pipes/FileValidationPipe"
+import { GetPostParams } from "./dto/get-posts-params.dto"
 
 @Controller("posts")
 export class PostController {
 	constructor(private readonly postService: PostService) {}
 
 	@Get()
-	async getPosts(
-		@Query("userId") userId: string,
-		@Query("limit", new DefaultValuePipe(15), ParseIntPipe) limit: number
-	) {
-		return this.postService.getPosts(Number(userId) || undefined, limit)
+	async getPosts(@Query() params: GetPostParams) {
+		return this.postService.getPosts(params)
 	}
 
 	@Get(":id")
 	async getPostById(@Param("id", ParseIntPipe) id: number) {
 		return this.postService.getPostById(id)
+	}
+
+	@Get("user/:id")
+	async getPostByUser(@Param("id", ParseIntPipe) id: number) {
+		return this.postService.getUserPosts(id)
 	}
 
 	@Auth()

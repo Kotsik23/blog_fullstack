@@ -6,7 +6,8 @@ import { PostModule } from './post/post.module';
 import { CommentModule } from './comment/comment.module';
 import { RoleModule } from './role/role.module';
 import { FileModule } from './file/file.module';
+import { PaginationModule } from './pagination/pagination.module';
 @Module({
-	imports: [PrismaModule, UserModule, AuthModule, PostModule, CommentModule, RoleModule, FileModule],
+	imports: [PrismaModule, UserModule, AuthModule, PostModule, CommentModule, RoleModule, FileModule, PaginationModule],
 })
 export class AppModule {}
