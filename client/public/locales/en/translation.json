@@ -146,7 +146,8 @@
       "content": "Content",
       "comments": "Comments",
       "tooltipDelete": "Delete Post",
-      "editBtn": "Edit post"
+      "editBtn": "Edit post",
+      "alert": "Only authorized users can leave comments"
    },
    "confirmDeletePost": {
       "heading": "Confirmation of deletion",

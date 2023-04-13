@@ -20,7 +20,7 @@ export const commentsApi = apiSlice.injectEndpoints({
 				method: API_METHODS.PATCH,
 				body,
 			}),
-			invalidatesTags: ["Comment"],
+			invalidatesTags: ["Comment", "Comment"],
 		}),
 
 		deleteComment: build.mutation<IComment, number>({

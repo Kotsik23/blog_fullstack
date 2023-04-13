@@ -26,7 +26,6 @@ export class CommentController {
 	}
 
 	@Auth()
-	@CheckRolesDecorator(Role.ADMIN, Role.MANAGER)
 	@Delete(":id")
 	async deleteComment(@Param("id", ParseIntPipe) id: number) {
 		return this.commentService.deleteComment(id)
