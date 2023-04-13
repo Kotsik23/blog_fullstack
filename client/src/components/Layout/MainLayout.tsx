@@ -7,7 +7,7 @@ const MainLayout = () => {
 	return (
 		<>
 			<Navbar />
-			<Container maxW="container.xl" as="main" minH="calc(100vh)">
+			<Container maxW="container.xl" as="main" minH="calc(100vh)" p="0">
 				<Outlet />
 			</Container>
 			<Footer />

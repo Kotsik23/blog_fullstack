@@ -13,11 +13,8 @@ export const authorApi = apiSlice.injectEndpoints({
 
 		getPostsList: build.query<AuthorPost[], number>({
 			query: id => ({
-				url: API_ROUTES.POSTS,
+				url: `${API_ROUTES.POSTS}/user/${id}`,
 				method: API_METHODS.GET,
-				params: {
-					userId: id,
-				},
 			}),
 		}),
 	}),

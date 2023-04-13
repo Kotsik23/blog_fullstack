@@ -15,6 +15,11 @@ export interface IPostAll extends IPost {
 	_count: Statistics
 }
 
+export interface IPostAllResponse {
+	posts: IPostAll[]
+	total: 0
+}
+
 export interface IPostOne extends IPost {
 	author: IUser
 	likes: IUser[]

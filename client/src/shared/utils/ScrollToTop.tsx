@@ -6,7 +6,7 @@ const ScrollToTop = ({ children }: { children: ReactElement | null }) => {
 
 	useLayoutEffect(() => {
 		document.documentElement.scrollTo(0, 0)
-	}, [location.pathname])
+	}, [location.pathname, location.search])
 
 	return children
 }

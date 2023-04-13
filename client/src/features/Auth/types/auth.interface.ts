@@ -14,14 +14,3 @@ export interface IAuthState {
 	user?: IUser | null
 	accessToken?: string | null
 }
-
-interface IError {
-	error: string
-	message: string
-	statusCode: number
-}
-
-export interface IAuthError {
-	data: IError
-	status: number
-}

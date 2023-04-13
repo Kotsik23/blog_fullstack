@@ -1,16 +1,20 @@
 import { apiSlice } from "app/api/api.slice"
 import { API_ROUTES, API_METHODS } from "shared/constants/api"
-import { IPost, IPostAll, IPostOne } from "shared/types/post"
+import { IPost, IPostAllResponse, IPostOne } from "shared/types/post"
 
 export const postsApi = apiSlice.injectEndpoints({
 	endpoints: build => ({
-		getAllPosts: build.query<IPostAll[], void>({
-			query: () => ({
+		getAllPosts: build.query<IPostAllResponse, { page: number; perPage: number }>({
+			query: ({ page, perPage }) => ({
 				url: API_ROUTES.POSTS,
 				method: API_METHODS.GET,
+				params: {
+					page,
+					perPage,
+				},
 			}),
 			providesTags: result =>
-				result ? [...result.map(({ id }) => ({ type: "Post" as const, id })), "Post"] : ["Post"],
+				result ? [...result.posts.map(({ id }) => ({ type: "Post" as const, id })), "Post"] : ["Post"],
 		}),
 
 		getPostById: build.query<IPostOne, string>({

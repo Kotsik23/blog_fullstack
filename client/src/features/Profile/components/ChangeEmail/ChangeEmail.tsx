@@ -2,11 +2,11 @@ import { Button, Divider, Stack, useColorModeValue, useToast } from "@chakra-ui/
 import { yupResolver } from "@hookform/resolvers/yup"
 import CustomInput from "components/CustomInput/CustomInput"
 import SectionHeader from "components/SectionHeader/SectionHeader"
-import { IAuthError } from "features/Auth/types/auth.interface"
 import { profileApi } from "features/Profile/api/profile"
 import { SubmitHandler, useForm } from "react-hook-form"
 import { useTranslation } from "react-i18next"
 import { TOAST_DEFAULT_OPTIONS } from "shared/constants/toast"
+import { ApiError } from "shared/types/error"
 import { useAppSelector } from "shared/utils/redux"
 import { changeEmailSchema } from "./schema"
 import { ChangeEmailFields } from "./types"
@@ -46,8 +46,8 @@ const ChangeEmail = () => {
 			})
 		} catch (error) {
 			toast({
-				title: (error as IAuthError).data.error || "Bad request",
-				description: (error as IAuthError).data.message && (error as IAuthError).data.message,
+				title: (error as ApiError).data.error || "Bad request",
+				description: (error as ApiError).data.message && (error as ApiError).data.message,
 				status: "error",
 			})
 		}

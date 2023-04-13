@@ -14,7 +14,7 @@ import {
 	useToast,
 } from "@chakra-ui/react"
 import { useLocation, useNavigate } from "react-router-dom"
-import { IAuthError, IAuthFields } from "../../types/auth.interface"
+import { IAuthFields } from "../../types/auth.interface"
 import { authApi } from "features/Auth/api/auth"
 import CustomInput from "components/CustomInput/CustomInput"
 import { IAuthFormProps } from "./Auth.props"
@@ -22,6 +22,7 @@ import { TOAST_DEFAULT_OPTIONS } from "shared/constants/toast"
 import { ROUTES } from "shared/constants/routes"
 import { authScheme } from "./auth.scheme"
 import { useTranslation } from "react-i18next"
+import { ApiError } from "shared/types/error"
 
 const Auth = ({ type }: IAuthFormProps) => {
 	const { t } = useTranslation()
@@ -56,8 +57,8 @@ const Auth = ({ type }: IAuthFormProps) => {
 			navigate(from || ROUTES.MAIN)
 		} catch (error) {
 			toast({
-				title: (error as IAuthError).data.error || "Bad request",
-				description: (error as IAuthError).data.message && (error as IAuthError).data.message,
+				title: (error as ApiError).data.error || "Bad request",
+				description: (error as ApiError).data.message && (error as ApiError).data.message,
 				status: "error",
 			})
 		}

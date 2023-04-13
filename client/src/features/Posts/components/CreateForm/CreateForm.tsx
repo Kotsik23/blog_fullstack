@@ -20,6 +20,7 @@ import { FormProvider, SubmitHandler, useForm } from "react-hook-form"
 import { useTranslation } from "react-i18next"
 import { useParams } from "react-router-dom"
 import { TOAST_DEFAULT_OPTIONS } from "shared/constants/toast"
+import { ApiError } from "shared/types/error"
 import TextEditor from "../TextEditor/TextEditor"
 import { schema } from "./schema"
 import { CreatePostFields } from "./types"
@@ -98,7 +99,11 @@ const CreateForm = () => {
 			reset(defaultValues)
 			setEditorState(EditorState.createEmpty())
 		} catch (error) {
-			console.log(error)
+			toast({
+				title: (error as ApiError).data.error || "Bad request",
+				description: (error as ApiError).data.message && (error as ApiError).data.message,
+				status: "error",
+			})
 		}
 	}
 
