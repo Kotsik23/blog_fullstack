@@ -68,11 +68,18 @@ export class PostService {
 		})
 	}
 
-	async updatePost(id: number, dto: UpdatePostDto): Promise<Post> {
-		if (dto.imageUrl) {
-			const post = await this.getPostById(id)
-			const oldImageUrl = post.imageUrl
-			await this.filesService.deleteFileFromFirebase(oldImageUrl)
+	async updatePost(id: number, dto: UpdatePostDto, image?: Express.Multer.File): Promise<Post> {
+		if (image) {
+			const post = await this.prisma.post.findUnique({ where: { id } })
+			await this.filesService.deleteFileFromFirebase(post.imageUrl)
+			const { url } = await this.filesService.uploadFileToFirebase("post", image)
+			return this.prisma.post.update({
+				where: { id },
+				data: {
+					...dto,
+					imageUrl: url,
+				},
+			})
 		}
 
 		return this.prisma.post.update({

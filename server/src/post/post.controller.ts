@@ -21,6 +21,7 @@ import { CurrentUser } from "src/auth/decorators/current-user.decorator"
 import { CreatePostDto } from "./dto/create-post.dto"
 import { UpdatePostDto } from "./dto/update-post.dto"
 import { FileInterceptor } from "@nestjs/platform-express"
+import { FileValidationPipe } from "src/pipes/FileValidationPipe"
 
 @Controller("posts")
 export class PostController {
@@ -66,8 +67,14 @@ export class PostController {
 
 	@Auth()
 	@Patch(":id")
-	async updatePost(@Param("id", ParseIntPipe) id: number, @Body() dto: UpdatePostDto) {
-		return this.postService.updatePost(id, dto)
+	@UseInterceptors(FileInterceptor("image"))
+	async updatePost(
+		@Param("id", ParseIntPipe) id: number,
+		@Body() dto: UpdatePostDto,
+		@UploadedFile(FileValidationPipe)
+		image?: Express.Multer.File
+	) {
+		return this.postService.updatePost(id, dto, image)
 	}
 
 	@Auth()
